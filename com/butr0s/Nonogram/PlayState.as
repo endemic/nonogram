@@ -210,7 +210,7 @@ package com.butr0s.Nonogram
 			{
 				_filledInBlocks++;		// So this loop doesn't keep going
 				FlxG.flash(0xffffffff, 0.5);
-				var _finishedPuzzleOverlay:FlxSprite = new FlxSprite(LevelOne, 209, 209, false, false);		//
+				var _finishedPuzzleOverlay:FlxSprite = new FlxSprite(LevelOne, 225, 225, false, false);		//
 				_finishedPuzzleOverlay.scale = new Point(16, 16);	// Scale by a factor of 16
 				this.add(new FlxSprite(null, 120, 120, false, false, 240, 240, 0xffffffff));		// White background
 				this.add(_finishedPuzzleOverlay);													// Overlay of puzzle w/o lines

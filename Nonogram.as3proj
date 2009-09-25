@@ -6,8 +6,8 @@
     <movie input="" />
     <movie path="bin\Nonogram.swf" />
     <movie fps="30" />
-    <movie width="800" />
-    <movie height="600" />
+    <movie width="360" />
+    <movie height="360" />
     <movie version="9" />
     <movie background="#FFFFFF" />
   </output>
