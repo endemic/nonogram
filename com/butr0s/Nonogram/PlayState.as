@@ -15,17 +15,25 @@ package com.butr0s.Nonogram
 		private var _cursorBlockY:int = 0;						// The Y block
 		private var _verticalClues:FlxArray = new FlxArray;		// Clues for columns
 		private var _horizontalClues:FlxArray = new FlxArray;	// Clues for rows
+		private var _horizontalArrow:FlxSprite;					// Arrow that helps show what clue box you should look at
+		private var _verticalArrow:FlxSprite;					// Arrow that helps show what clue box you should look at
 		private var _tiles:FlxArray = new FlxArray;				// 2D array of FlxSprites that show filled in/marked tiles
 		private var _e:FlxEmitter;								// Particle emitter for effect when correct tile is filled in
 		private var _filledInBlocks:int = 0;					// Number of correctly filled in blocks. Tracked for win condition
 		private var _totalBlocks:int = 0;						// Total number of blocks player must fill in. Tracked for win condition
 		private var levelSize:int = 15;							// Number of tiles in the puzzle (square)
 		
+		[Embed(source = "images/mouse-cursor.png")] private var MouseCursor:Class;
 		[Embed(source = "images/cursor.png")] private var Cursor:Class;
+		[Embed(source = "images/arrow.png")] private var Arrow:Class;
 		[Embed(source = "images/background.png")] private var Background:Class;
 		[Embed(source = "images/tiles.png")] private var Tiles:Class;
 		[Embed(source = "images/particle.png")] private var Particle:Class;
 		[Embed(source = "levels/1.png")] private var LevelOne:Class;
+		
+		[Embed(source = "sounds/dud.mp3")] private var DudSound:Class;
+		[Embed(source = "sounds/hit.mp3")] private var HitSound:Class;
+		[Embed(source = "sounds/miss.mp3")] private var MissSound:Class;
 		
 		override public function PlayState():void
 		{
@@ -33,7 +41,7 @@ package com.butr0s.Nonogram
 			var i:int, j:int, k:int;
 			
 			// Set graphic for mouse cursor
-			FlxG.setCursor(Cursor);
+			//FlxG.setCursor(MouseCursor);
 			
 			// Set up background
 			_background = new FlxSprite(Background, 0, 0, false, false);
@@ -45,29 +53,39 @@ package com.butr0s.Nonogram
 				_tiles.add(new FlxArray);
 				for (j = 0; j < levelSize; j++)
 				{
-					_tiles[i].add(new FlxSprite(Tiles, 120 + (i * 16), 120 + (j * 16), true));
+					_tiles[i].add(new FlxSprite(Tiles, 52 + (i * 8), 52 + (j * 8), true));
+					_tiles[i][j].health = 0;
 					this.add(_tiles[i][j]);
 				}
 			}
 			
 			// Set up horizontal lines that help show subsections of the puzzle
-			this.add(new FlxSprite(null, 120, 120 + (5 * 16), false, false, 16 * 15, 1, 0xff333333));
-			this.add(new FlxSprite(null, 120, 120 + (10 * 16), false, false, 16 * 15, 1, 0xff333333));
+			this.add(new FlxSprite(null, 52, 51 + (5 * 8), false, false, 8 * 15, 1, 0xff333333));
+			this.add(new FlxSprite(null, 52, 51 + (10 * 8), false, false, 8 * 15, 1, 0xff333333));
 			
 			// Set up vertical lines that help show subsections of the puzzle
-			this.add(new FlxSprite(null, 120 + (5 * 16), 120, false, false, 1, 16 * 15, 0xff333333));
-			this.add(new FlxSprite(null, 120 + (10 * 16), 120, false, false, 1, 16 * 15, 0xff333333));
+			this.add(new FlxSprite(null, 52 + (5 * 8), 52, false, false, 1, 8 * 15, 0xff333333));
+			this.add(new FlxSprite(null, 52 + (10 * 8), 52, false, false, 1, 8 * 15, 0xff333333));
 			
 			// Set up cursor
-			_cursor = new FlxSprite(null, 120, 120, false, false, 16, 16, 0xffff0000);
+			_cursor = new FlxSprite(Cursor, 52, 52, true, false, 8, 8);
+			_cursor.addAnimation("move", [0, 1], 1, true);	
+			_cursor.play("move", true);
 			this.add(_cursor);
 			
-			// Set up some debug text
-			_timer = new FlxText(10, 10, 94, 94, "0,0", 0xffffffff, null, 24, "left");
+			// Set up arrows that move along the clue area in sync with cursor
+			_verticalArrow = new FlxSprite(Arrow, 53, 48, false, false);
+			_horizontalArrow = new FlxSprite(Arrow, 46, 55, false, false);
+			_horizontalArrow.angle = -90;		// Turn it horizontal
+			this.add(_verticalArrow);
+			this.add(_horizontalArrow);
+			
+			// Set up text for timer
+			_timer = new FlxText(0, 0, 94, 94, "0,0", 0xffffffff, null, 12, "left");
 			this.add(_timer);
 			
 			// Set up particle emitter, kill it, and add to state
-			_e = new FlxEmitter(_cursor.x, _cursor.y, 16, 16, null, -0.5, -150, 150, -200, 0,-360,360,400, 0, Particle, 20, true);
+			_e = new FlxEmitter(_cursor.x, _cursor.y, 8, 8, null, -0.5, -150, 150, -200, 0,-360, 360, 400, 0, Particle, 20, true);
 			_e.kill();
 			this.add(_e);
 			
@@ -78,10 +96,10 @@ package com.butr0s.Nonogram
 			// Create "clue" FlxText objects in arrays for rows and columns
 			for (i = 0; i < levelSize; i++)
 			{
-				_verticalClues.add(new FlxText(120 + (16 * i), 0, 16, 120, "0", 0xff000000, null, 16, "center"));
+				_verticalClues.add(new FlxText(51 + (8 * i), 0, 10, 52, "0", 0xff000000, null, 8, "center"));
 				this.add(_verticalClues[i]);
 				
-				_horizontalClues.add(new FlxText(0, 117 + (16 * i), 120, 16, "0", 0xff000000, null, 16, "right"));
+				_horizontalClues.add(new FlxText(0, 50 + (8 * i), 48, 8, "0", 0xff000000, null, 8, "right"));
 				this.add(_horizontalClues[i]);
 			}
 			
@@ -138,22 +156,26 @@ package com.butr0s.Nonogram
 			// Move cursor
 			if (FlxG.justPressed(FlxG.UP) && _cursorBlockY > 0)
 			{
-				_cursor.y -= 16;
+				_cursor.y -= 8;
+				_horizontalArrow.y -= 8;
 				_cursorBlockY--;
 			}
 			if (FlxG.justPressed(FlxG.DOWN) && _cursorBlockY < 14)
 			{
-				_cursor.y += 16;
+				_cursor.y += 8;
+				_horizontalArrow.y += 8;
 				_cursorBlockY++;
 			}
 			if (FlxG.justPressed(FlxG.LEFT) && _cursorBlockX > 0)
 			{
-				_cursor.x -= 16;
+				_cursor.x -= 8;
+				_verticalArrow.x -= 8;
 				_cursorBlockX--;
 			}
 			if (FlxG.justPressed(FlxG.RIGHT) && _cursorBlockX < 14)
 			{
-				_cursor.x += 16;
+				_cursor.x += 8;
+				_verticalArrow.x += 8;
 				_cursorBlockX++;
 			}
 			
@@ -168,6 +190,8 @@ package com.butr0s.Nonogram
 					_e.kill();
 					_e.reset();
 					
+					FlxG.play(HitSound, 0.5);	// Class, volume (0 - 1)
+					
 					// Change tile underneath cursor to show that it's marked
 					_tiles[_cursorBlockX][_cursorBlockY].specificFrame(2);
 					
@@ -181,23 +205,25 @@ package com.butr0s.Nonogram
 				else if (_tiles[_cursorBlockX][_cursorBlockY].health == 2)
 				{
 					// Do nothing! Maybe play a noise to show you've already filled in this box
+					FlxG.play(DudSound, 0.5);	// Class, volume (0 - 1)
 				}
 				// Miss!
 				else
 				{
-					FlxG.quake(0.01, 0.2);
+					FlxG.play(MissSound, 0.5);	// Class, volume (0 - 1)
+					FlxG.quake(0.01, 0.2);		// Intensity, duration
 				}
 			}
 			
-			// Mark a block for reference
-			if (FlxG.justPressed(FlxG.B) && _tiles[_cursorBlockX][_cursorBlockY].health == 0)
+			// Mark a block for reference - don't allow marking of tiles that have already been filled in
+			if (FlxG.justPressed(FlxG.B) && _tiles[_cursorBlockX][_cursorBlockY].health == 0 && _tiles[_cursorBlockX][_cursorBlockY].health != 2)
 			{
 				_tiles[_cursorBlockX][_cursorBlockY].specificFrame(1);
 				
 				// This is stupid, but I don't want to create a whole 'nother 2D array to store this info... so it's going in the "health" var
 				_tiles[_cursorBlockX][_cursorBlockY].health = 1;
 			}
-			else if (_tiles[_cursorBlockX][_cursorBlockY].health == 1)
+			else if (FlxG.justPressed(FlxG.B) && _tiles[_cursorBlockX][_cursorBlockY].health == 1 && _tiles[_cursorBlockX][_cursorBlockY].health != 2)
 			{
 				_tiles[_cursorBlockX][_cursorBlockY].specificFrame(0);
 				
@@ -210,13 +236,13 @@ package com.butr0s.Nonogram
 			{
 				_filledInBlocks++;		// So this loop doesn't keep going
 				FlxG.flash(0xffffffff, 0.5);
-				var _finishedPuzzleOverlay:FlxSprite = new FlxSprite(LevelOne, 225, 225, false, false);		//
-				_finishedPuzzleOverlay.scale = new Point(16, 16);	// Scale by a factor of 16
-				this.add(new FlxSprite(null, 120, 120, false, false, 240, 240, 0xffffffff));		// White background
+				var _finishedPuzzleOverlay:FlxSprite = new FlxSprite(LevelOne, 112.5, 112.5, false, false);		//
+				_finishedPuzzleOverlay.scale = new Point(8, 8);	// Scale by a factor of 8
+				this.add(new FlxSprite(null, 60, 60, false, false, 120, 120, 0xffffffff));		// White background
 				this.add(_finishedPuzzleOverlay);													// Overlay of puzzle w/o lines
-				
 			}
 			
+			// Currently filled with debug text :(
 			_timer.setText(_cursorBlockX + ", " + _cursorBlockY);
 			
 			super.update();
