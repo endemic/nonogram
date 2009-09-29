@@ -53,29 +53,29 @@ package com.butr0s.Nonogram
 				_tiles.add(new FlxArray);
 				for (j = 0; j < levelSize; j++)
 				{
-					_tiles[i].add(new FlxSprite(Tiles, 52 + (i * 8), 52 + (j * 8), true));
+					_tiles[i].add(new FlxSprite(Tiles, 60 + (i * 8), 60 + (j * 8), true));
 					_tiles[i][j].health = 0;
 					this.add(_tiles[i][j]);
 				}
 			}
 			
 			// Set up horizontal lines that help show subsections of the puzzle
-			this.add(new FlxSprite(null, 52, 51 + (5 * 8), false, false, 8 * 15, 1, 0xff333333));
-			this.add(new FlxSprite(null, 52, 51 + (10 * 8), false, false, 8 * 15, 1, 0xff333333));
+			this.add(new FlxSprite(null, 60, 59 + (5 * 8), false, false, 8 * 15, 1, 0xff333333));
+			this.add(new FlxSprite(null, 60, 59 + (10 * 8), false, false, 8 * 15, 1, 0xff333333));
 			
 			// Set up vertical lines that help show subsections of the puzzle
-			this.add(new FlxSprite(null, 52 + (5 * 8), 52, false, false, 1, 8 * 15, 0xff333333));
-			this.add(new FlxSprite(null, 52 + (10 * 8), 52, false, false, 1, 8 * 15, 0xff333333));
+			this.add(new FlxSprite(null, 60 + (5 * 8), 60, false, false, 1, 8 * 15, 0xff333333));
+			this.add(new FlxSprite(null, 60 + (10 * 8), 60, false, false, 1, 8 * 15, 0xff333333));
 			
 			// Set up cursor
-			_cursor = new FlxSprite(Cursor, 52, 52, true, false, 8, 8);
+			_cursor = new FlxSprite(Cursor, 60, 60, true, false, 8, 8);
 			_cursor.addAnimation("move", [0, 1], 1, true);	
 			_cursor.play("move", true);
 			this.add(_cursor);
 			
 			// Set up arrows that move along the clue area in sync with cursor
-			_verticalArrow = new FlxSprite(Arrow, 53, 48, false, false);
-			_horizontalArrow = new FlxSprite(Arrow, 46, 55, false, false);
+			_verticalArrow = new FlxSprite(Arrow, 61, 56, false, false);
+			_horizontalArrow = new FlxSprite(Arrow, 54, 63, false, false);
 			_horizontalArrow.angle = -90;		// Turn it horizontal
 			this.add(_verticalArrow);
 			this.add(_horizontalArrow);
@@ -96,14 +96,14 @@ package com.butr0s.Nonogram
 			// Create "clue" FlxText objects in arrays for rows and columns
 			for (i = 0; i < levelSize; i++)
 			{
-				_verticalClues.add(new FlxText(51 + (8 * i), 0, 10, 52, "0", 0xff000000, null, 8, "center"));
+				_verticalClues.add(new FlxText(59 + (8 * i), 0, 10, 52, "0", 0xff000000, null, 8, "center"));
 				this.add(_verticalClues[i]);
 				
-				_horizontalClues.add(new FlxText(0, 50 + (8 * i), 48, 8, "0", 0xff000000, null, 8, "right"));
+				_horizontalClues.add(new FlxText(0, 58 + (8 * i), 56, 8, "0", 0xff000000, null, 8, "right"));
 				this.add(_horizontalClues[i]);
 			}
 			
-			// Populate the clues
+			// Populate/position the clues
 			var counterHoriz:int = 0;
 			var counterVert:int = 0;
 			var previousHoriz:Boolean = false;
@@ -145,7 +145,12 @@ package com.butr0s.Nonogram
 				if (cluesTextVert != '') 
 				{
 					_verticalClues[i].setText(cluesTextVert);
+					_verticalClues[i].y = 52 - (cluesTextVert.length / 2 * 8);
 					FlxG.log(String(cluesTextVert.length));
+				}
+				else
+				{
+					_verticalClues[i].y = 44;
 				}
 			}
 			
