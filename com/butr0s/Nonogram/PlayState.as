@@ -27,7 +27,6 @@ package com.butr0s.Nonogram
 		private var _levelSize:int = 15;						// Number of tiles in the puzzle (square)
 		private var _gameOver:Boolean = false;					// Whether player has lost this particular puzzle or not
 		
-		[Embed(source = "images/mouse-cursor.png")] private var MouseCursor:Class;
 		[Embed(source = "images/cursor.png")] private var Cursor:Class;
 		[Embed(source = "images/cursor-arrow.png")] private var CursorArrow:Class;
 		[Embed(source = "images/arrow.png")] private var Arrow:Class;
