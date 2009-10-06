@@ -10,7 +10,7 @@ package {
 		public function Nonogram():void
 		{
 			// width, height, starting game state, zoom level, background, show flixel logo, flixel color, flixel sound, frame
-			super(180, 180, PlayState, 2, 0xff000000, false, 0xff000000);
+			super(360, 360, PlayState, 1, 0xff000000, false, 0xff000000);
 			help("Mark", "Fill", "Nothing");	// X, C, Mouse
 		}
 	}

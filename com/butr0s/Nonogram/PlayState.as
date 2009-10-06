@@ -25,6 +25,7 @@ package com.butr0s.Nonogram
 		private var _totalBlocks:int = 0;						// Total number of blocks player must fill in. Tracked for win condition
 		private var _misses:int = 0;							// How many incorrect guesses the player has made
 		private var _levelSize:int = 15;						// Number of tiles in the puzzle (square)
+		private var _tileSize:int = 16;							// Width of tile used to make up game
 		private var _gameOver:Boolean = false;					// Whether player has lost this particular puzzle or not
 		
 		[Embed(source = "images/cursor.png")] private var Cursor:Class;
@@ -34,7 +35,7 @@ package com.butr0s.Nonogram
 		[Embed(source = "images/tiles.png")] private var Tiles:Class;
 		[Embed(source = "images/particle.png")] private var Particle:Class;
 		[Embed(source = "images/mark-particle.png")] private var MarkParticle:Class;
-		[Embed(source = "levels/1.png")] private var LevelOne:Class;
+		[Embed(source = "levels/2.png")] private var LevelOne:Class;
 		
 		[Embed(source = "sounds/dud.mp3")] private var DudSound:Class;
 		[Embed(source = "sounds/hit.mp3")] private var HitSound:Class;
@@ -58,35 +59,35 @@ package com.butr0s.Nonogram
 				_tiles.add(new FlxArray);
 				for (j = 0; j < _levelSize; j++)
 				{
-					_tiles[i].add(new FlxSprite(Tiles, 60 + (i * 8), 60 + (j * 8), true));
+					_tiles[i].add(new FlxSprite(Tiles, 120 + (i * _tileSize), 120 + (j * _tileSize), true));
 					_tiles[i][j].health = 0;
 					this.add(_tiles[i][j]);
 				}
 			}
 			
 			// Set up horizontal lines that help show subsections of the puzzle
-			this.add(new FlxSprite(null, 60, 59 + (5 * 8), false, false, 8 * 15, 1, 0xff333333));
-			this.add(new FlxSprite(null, 60, 59 + (10 * 8), false, false, 8 * 15, 1, 0xff333333));
+			this.add(new FlxSprite(null, 120, 118 + (5 * _tileSize), false, false, _tileSize * 15, 1, 0xff333333));
+			this.add(new FlxSprite(null, 120, 118 + (10 * _tileSize), false, false, _tileSize * 15, 1, 0xff333333));
 			
 			// Set up vertical lines that help show subsections of the puzzle
-			this.add(new FlxSprite(null, 60 + (5 * 8), 60, false, false, 1, 8 * 15, 0xff333333));
-			this.add(new FlxSprite(null, 60 + (10 * 8), 60, false, false, 1, 8 * 15, 0xff333333));
+			this.add(new FlxSprite(null, 120 + (5 * _tileSize), 120, false, false, 1, _tileSize * 15, 0xff333333));
+			this.add(new FlxSprite(null, 120 + (10 * _tileSize), 120, false, false, 1, _tileSize * 15, 0xff333333));
 			
 			// Set up cursor
-			_cursor = new FlxSprite(CursorArrow, 59, 52, true, false, 16, 16);
+			_cursor = new FlxSprite(CursorArrow, 118, 114, true, false, 16, 16);
 			_cursor.addAnimation("move", [0, 1, 2, 1], 1.25, true);	
 			_cursor.play("move", true);
 			this.add(_cursor);
 			
 			// Set up arrows that move along the clue area in sync with cursor
-			_verticalArrow = new FlxSprite(Arrow, 61, 56, false, false);
-			_horizontalArrow = new FlxSprite(Arrow, 54, 63, false, false);
+			_verticalArrow = new FlxSprite(Arrow, 122, 112, false, false);
+			_horizontalArrow = new FlxSprite(Arrow, 109, 125, false, false);
 			_horizontalArrow.angle = -90;		// Turn it horizontal
 			this.add(_verticalArrow);
 			this.add(_horizontalArrow);
 			
 			// Set up text for timer
-			_timer = new FlxText(2, 20, 94, 94, "0,0", 0xffffffff, null, 16, "left");
+			_timer = new FlxText(60, 60, 94, 94, "0,0", 0xffffffff, null, 16, "left");
 			this.add(_timer);
 			
 			// Set up particle emitter, kill it, and add to state
@@ -106,10 +107,10 @@ package com.butr0s.Nonogram
 			// Create "clue" FlxText objects in arrays for rows and columns
 			for (i = 0; i < _levelSize; i++)
 			{
-				_verticalClues.add(new FlxText(59 + (8 * i), 0, 10, 54, "0", 0xff000000, null, 8, "center"));
+				_verticalClues.add(new FlxText(118 + (_tileSize * i), 0, 18, 110, "0", 0xff000000, null, 12, "center"));
 				this.add(_verticalClues[i]);
 				
-				_horizontalClues.add(new FlxText(0, 58 + (8 * i), 56, 8, "0", 0xff000000, null, 8, "right"));
+				_horizontalClues.add(new FlxText(0, 120 + (_tileSize * i), 110, 16, "0", 0xff000000, null, 12, "right"));
 				this.add(_horizontalClues[i]);
 			}
 			
@@ -126,6 +127,7 @@ package com.butr0s.Nonogram
 				cluesTextVert = "";
 				for (j = 0; j < _levelSize; j++) 
 				{
+					// Horizontal clues (for rows)
 					if (_level.getPixel(j, i).toString(16) == "0")
 					{
 						counterHoriz++;
@@ -139,6 +141,7 @@ package com.butr0s.Nonogram
 						previousHoriz = false;
 					}
 					
+					// Vertical clues (for columns)
 					if (_level.getPixel(i, j).toString(16) == "0")
 					{
 						counterVert++;
@@ -151,17 +154,35 @@ package com.butr0s.Nonogram
 						previousVert = false;
 					}
 				}
-				if (cluesTextHoriz != '') _horizontalClues[i].setText(cluesTextHoriz);
-				if (cluesTextVert != '') 
+				
+				// Condition for if a row ends with filled in blocks
+				if (previousHoriz == true)
+				{
+					cluesTextHoriz = cluesTextHoriz.concat(counterHoriz + " ");
+					_totalBlocks += counterHoriz;
+					counterHoriz = 0;
+					previousHoriz = false;
+				}
+				if (previousVert == true) 
+				{
+					cluesTextVert = cluesTextVert.concat(counterVert + "\n");
+					counterVert = 0;
+					previousVert = false;
+				}
+				
+				// Add the text to the FlxText objects
+				if (cluesTextHoriz != "")
+				{
+					_horizontalClues[i].setText(cluesTextHoriz);
+				}
+				if (cluesTextVert != "") 
 				{
 					_verticalClues[i].setText(cluesTextVert);
-					_verticalClues[i].y = 54 - (cluesTextVert.length / 2 * 10);
-					// FlxG.log(String(cluesTextVert.length / 2 * 8));
-					// FlxG.log("Trying to place clue #" + i + " at " + _verticalClues[i].y);
+					_verticalClues[i].y = 108 - (cluesTextVert.length / 2 * 15);
 				}
 				else
 				{
-					_verticalClues[i].y = 44;
+					_verticalClues[i].y = 93;
 				}
 			}
 			
@@ -175,26 +196,26 @@ package com.butr0s.Nonogram
 				// Move cursor
 				if (FlxG.justPressed(FlxG.UP) && _cursorBlockY > 0)
 				{
-					_cursor.y -= 8;
-					_horizontalArrow.y -= 8;
+					_cursor.y -= _tileSize;
+					_horizontalArrow.y -= _tileSize;
 					_cursorBlockY--;
 				}
 				if (FlxG.justPressed(FlxG.DOWN) && _cursorBlockY < 14)
 				{
-					_cursor.y += 8;
-					_horizontalArrow.y += 8;
+					_cursor.y += _tileSize;
+					_horizontalArrow.y += _tileSize;
 					_cursorBlockY++;
 				}
 				if (FlxG.justPressed(FlxG.LEFT) && _cursorBlockX > 0)
 				{
-					_cursor.x -= 8;
-					_verticalArrow.x -= 8;
+					_cursor.x -= _tileSize;
+					_verticalArrow.x -= _tileSize;
 					_cursorBlockX--;
 				}
 				if (FlxG.justPressed(FlxG.RIGHT) && _cursorBlockX < 14)
 				{
-					_cursor.x += 8;
-					_verticalArrow.x += 8;
+					_cursor.x += _tileSize;
+					_verticalArrow.x += _tileSize;
 					_cursorBlockX++;
 				}
 			
