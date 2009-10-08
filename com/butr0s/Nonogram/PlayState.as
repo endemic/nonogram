@@ -66,15 +66,15 @@ package com.butr0s.Nonogram
 			}
 			
 			// Set up horizontal lines that help show subsections of the puzzle
-			this.add(new FlxSprite(null, 120, 118 + (5 * _tileSize), false, false, _tileSize * 15, 1, 0xff333333));
-			this.add(new FlxSprite(null, 120, 118 + (10 * _tileSize), false, false, _tileSize * 15, 1, 0xff333333));
+			this.add(new FlxSprite(null, 120, 119 + (5 * _tileSize), false, false, _tileSize * 15, 1, 0xff333333));
+			this.add(new FlxSprite(null, 120, 119 + (10 * _tileSize), false, false, _tileSize * 15, 1, 0xff333333));
 			
 			// Set up vertical lines that help show subsections of the puzzle
 			this.add(new FlxSprite(null, 120 + (5 * _tileSize), 120, false, false, 1, _tileSize * 15, 0xff333333));
 			this.add(new FlxSprite(null, 120 + (10 * _tileSize), 120, false, false, 1, _tileSize * 15, 0xff333333));
 			
 			// Set up cursor
-			_cursor = new FlxSprite(CursorArrow, 118, 114, true, false, 16, 16);
+			_cursor = new FlxSprite(CursorArrow, 122, 116, true, false, 16, 16);
 			_cursor.addAnimation("move", [0, 1, 2, 1], 1.25, true);	
 			_cursor.play("move", true);
 			this.add(_cursor);
@@ -87,7 +87,7 @@ package com.butr0s.Nonogram
 			this.add(_horizontalArrow);
 			
 			// Set up text for timer
-			_timer = new FlxText(60, 60, 94, 94, "0,0", 0xffffffff, null, 16, "left");
+			_timer = new FlxText(6, 40, 110, 110, "0,0", 0xffffffff, null, 32, "left");
 			this.add(_timer);
 			
 			// Set up particle emitter, kill it, and add to state
@@ -200,7 +200,7 @@ package com.butr0s.Nonogram
 					_horizontalArrow.y -= _tileSize;
 					_cursorBlockY--;
 				}
-				if (FlxG.justPressed(FlxG.DOWN) && _cursorBlockY < 14)
+				if (FlxG.justPressed(FlxG.DOWN) && _cursorBlockY < _levelSize - 1)
 				{
 					_cursor.y += _tileSize;
 					_horizontalArrow.y += _tileSize;
@@ -212,7 +212,7 @@ package com.butr0s.Nonogram
 					_verticalArrow.x -= _tileSize;
 					_cursorBlockX--;
 				}
-				if (FlxG.justPressed(FlxG.RIGHT) && _cursorBlockX < 14)
+				if (FlxG.justPressed(FlxG.RIGHT) && _cursorBlockX < _levelSize - 1)
 				{
 					_cursor.x += _tileSize;
 					_verticalArrow.x += _tileSize;
@@ -291,13 +291,17 @@ package com.butr0s.Nonogram
 			{
 				_gameOver = true;
 				FlxG.flash(0xffffffff, 0.5);
-				var _finishedPuzzleOverlay:FlxSprite = new FlxSprite(LevelOne, 112.5, 112.5, false, false);		//
-				_finishedPuzzleOverlay.scale = new Point(8, 8);	// Scale by a factor of 8
-				//this.add(new FlxSprite(null, 52, 52, false, false, 120, 120, 0xffffffff));		// White background
+				var _finishedPuzzleOverlay:FlxSprite = new FlxSprite(LevelOne, 226, 226, false, false);
+				_finishedPuzzleOverlay.scale = new Point(4, 4);	// Scale by a factor of 8
+				this.add(new FlxSprite(null, 120, 120, false, false, 240, 240, 0xffffffff));		// White background
 				this.add(_finishedPuzzleOverlay);	// Overlay of puzzle w/o lines
+				
+				this.add(new FlxText(115, 160, 250, 200, "Congratulations!", 0x000000, null, 20, "center"));
+				this.add(new FlxText(135, 275, 200, 200, "Castle", 0x000000, null, 16, "center"));
 				
 				_horizontalArrow.visible = false;	// Hide the cursor position indicator helpers
 				_verticalArrow.visible = false;
+				_cursor.visible = false;
 			}
 			
 			// Puzzle lose condition
