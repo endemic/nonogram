@@ -298,11 +298,14 @@ package com.butr0s.Nonogram
 				
 				this.add(new FlxText(115, 160, 250, 200, "Congratulations!", 0x000000, null, 20, "center"));
 				this.add(new FlxText(135, 275, 200, 200, "Castle", 0x000000, null, 16, "center"));
+				this.add(new FlxText(135, 300, 200, 200, "Press X or C to continue", 0x000000, null, 12, "center"));
 				
 				_horizontalArrow.visible = false;	// Hide the cursor position indicator helpers
 				_verticalArrow.visible = false;
 				_cursor.visible = false;
 			}
+			
+			if (_gameOver)
 			
 			// Puzzle lose condition
 			if (_timeLeft <= 0 && _gameOver == false)
