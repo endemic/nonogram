@@ -9,7 +9,6 @@ package com.butr0s.Nonogram
 		[Embed(source = "images/menu-background.png")] private var Background:Class;
 		[Embed(source = "images/level-select-button.png")] private var ButtonBackground:Class;
 		
-		private var background:FlxSprite;
 		private var buttonBackground:FlxSprite;
 		private var buttonBackgroundOn:FlxSprite;
 		private var buttonText:FlxText;
@@ -20,9 +19,15 @@ package com.butr0s.Nonogram
 			FlxG.setCursor(MouseCursor);
 			
 			// Set up background
-			background = new FlxSprite(Background, 0, 0, false, false);
-			this.add(background);
+			this.add(new FlxSprite(Background, 0, 0, false, false));
 			
+			// Set up descriptive text
+			this.add(new FlxText(5, 5, 300, 50, "Select your puzzle", 0x000000, null, 24, "left"));
+			
+			// Set up button to return to the title screen
+			this.add(new FlxButton(5, 340, new FlxSprite(null, 0, 0, false, false, 100, 20, 0xffcccccc), goToMenu, null, new FlxText(0, 0, 100, 25, "Return to title screen", 0x000000, null, 16)));
+			
+			// Set up level select buttons
 			var buttonPlacementX:int = 10, buttonPlacementY:int = 50;
 			for (var i:int = 1; i <= 30; i++)
 			{
@@ -49,5 +54,9 @@ package com.butr0s.Nonogram
 			
 		}
 		
+		private function goToMenu():void 
+		{
+			FlxG.switchState(MenuState);
+		}
 	}
 }
