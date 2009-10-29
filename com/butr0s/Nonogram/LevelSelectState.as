@@ -8,6 +8,17 @@ package com.butr0s.Nonogram
 		[Embed(source = "images/mouse-cursor.png")] private var MouseCursor:Class;
 		[Embed(source = "images/menu-background.png")] private var Background:Class;
 		[Embed(source = "images/level-select-button.png")] private var ButtonBackground:Class;
+		[Embed(source = "images/level-select-complete-button.png")] private var ButtonCompleteBackground:Class;
+		[Embed(source = "images/level-select-button-hover.png")] private var ButtonBackgroundHover:Class;
+		[Embed(source = "images/level-select-complete-button-hover.png")] private var ButtonCompleteBackgroundHover:Class;
+		
+		[Embed(source = "levels/apple.png")] private var LevelOne:Class;
+		[Embed(source = "levels/bomb.png")] private var LevelTwo:Class;
+		[Embed(source = "levels/bottle.png")] private var LevelThree:Class;
+		[Embed(source = "levels/boulder.png")] private var LevelFour:Class;
+		[Embed(source = "levels/candle.png")] private var LevelFive:Class;
+		[Embed(source = "levels/castle.png")] private var LevelSix:Class;
+		[Embed(source = "levels/cherry.png")] private var LevelSeven:Class;
 		
 		private var buttonBackground:FlxSprite;
 		private var buttonBackgroundOn:FlxSprite;
@@ -15,6 +26,49 @@ package com.butr0s.Nonogram
 
 		override public function LevelSelectState():void
 		{
+			// Set up level array data
+			if (!FlxG.levels.length) 
+			{
+				FlxG.levels = new FlxArray();
+				FlxG.levels.push( { } );	// Push an empty object to fill the '0' position
+				FlxG.levels.push( { 'levelData':LevelOne, 'description':'Apple', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelTwo, 'description':'Bomb', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Bottle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelFour, 'description':'Boulder', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelFive, 'description':'Candle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelSix, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelSeven, 'description':'Cherry', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+			}
+			
+			FlxG.level = 1;
+			
+			// DEBUG
+			FlxG.levels[2].completed = 'Yes';
+			FlxG.levels[3].completed = 'Yes';
+						
 			// Set graphic for mouse cursor
 			FlxG.setCursor(MouseCursor);
 			
@@ -31,7 +85,11 @@ package com.butr0s.Nonogram
 			var buttonPlacementX:int = 10, buttonPlacementY:int = 50;
 			for (var i:int = 1; i <= 30; i++)
 			{
-				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground, 0, 0), goToLevel, null, new FlxText(30, 0, 110, 25, "Level " + i, 0xff000000, null, 16)));
+				if (FlxG.levels[i].completed == 'Yes')
+					this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(30, 0, 110, 25, "Level " + i, 0xff000000, null, 16)));
+				else 
+					this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel, new FlxSprite(ButtonBackgroundHover), new FlxText(30, 0, 110, 25, "Level " + i, 0xff000000, null, 16)));
+					
 				buttonPlacementY += 27;
 				if (i % 10 == 0) 
 				{
@@ -51,7 +109,7 @@ package com.butr0s.Nonogram
 		
 		private function goToLevel(number:int = 1):void
 		{
-			
+			FlxG.switchState(PlayState);
 		}
 		
 		private function goToMenu():void 
