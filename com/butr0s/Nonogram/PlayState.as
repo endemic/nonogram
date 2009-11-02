@@ -306,9 +306,21 @@ package com.butr0s.Nonogram
 				_cursor.visible = false;
 				
 				FlxG.levels[FlxG.level].completed = 'Yes';
+				
+				var minutes:String = String(Math.floor(_timeLeft / 60));
+				var seconds:String = String(Math.floor(_timeLeft % 60));
+
+				// Pad the minutes/seconds
+				if (minutes.length < 2) minutes = "0" + minutes;
+				if (seconds.length < 2) seconds = "0" + seconds;
+				
+				FlxG.levels[FlxG.level].bestTime = minutes + ":" + seconds;
 			}
 			
-			if (_gameOver)
+			if (_gameOver && (FlxG.justPressed(FlxG.B) || FlxG.justPressed(FlxG.A))) 
+			{
+				FlxG.switchState(LevelSelectState);
+			}
 			
 			// Puzzle lose condition
 			if (_timeLeft <= 0 && _gameOver == false)
@@ -327,8 +339,8 @@ package com.butr0s.Nonogram
 			if (_gameOver == false)
 			{
 				_timeLeft -= FlxG.elapsed;
-				var minutes:String = String(Math.floor(_timeLeft / 60));
-				var seconds:String = String(Math.floor(_timeLeft % 60));
+				minutes = String(Math.floor(_timeLeft / 60));
+				seconds = String(Math.floor(_timeLeft % 60));
 
 				// Pad the minutes/seconds
 				if (minutes.length < 2) minutes = "0" + minutes;
