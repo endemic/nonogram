@@ -25,6 +25,26 @@ package com.butr0s.Nonogram
 		[Embed(source = "levels/gameboy.png")] private var LevelEleven:Class;
 		[Embed(source = "levels/heart.png")] private var LevelTwelve:Class;
 		[Embed(source = "levels/house.png")] private var LevelThirteen:Class;
+		[Embed(source = "levels/japan.png")] private var LevelFourteen:Class;
+		[Embed(source = "levels/lock.png")] private var LevelFifteen:Class;
+		[Embed(source = "levels/mario.png")] private var LevelSixteen:Class;
+		[Embed(source = "levels/monster.png")] private var LevelSeventeen:Class;
+		[Embed(source = "levels/mushroom.png")] private var LevelEighteen:Class;
+		[Embed(source = "levels/note.png")] private var LevelNineteen:Class;
+		[Embed(source = "levels/palm-tree.png")] private var LevelTwenty:Class;
+		[Embed(source = "levels/pencil.png")] private var LevelTwentyOne:Class;
+		[Embed(source = "levels/rabbit.png")] private var LevelTwentyTwo:Class;
+		[Embed(source = "levels/shell.png")] private var LevelTwentyThree:Class;
+		[Embed(source = "levels/spikes.png")] private var LevelTwentyFour:Class;
+		[Embed(source = "levels/stairs.png")] private var LevelTwentyFive:Class;
+		[Embed(source = "levels/stopwatch.png")] private var LevelTwentySix:Class;
+		[Embed(source = "levels/sword.png")] private var LevelTwentySeven:Class;
+		[Embed(source = "levels/telephone.png")] private var LevelTwentyEight:Class;
+		[Embed(source = "levels/tornado.png")] private var LevelTwentyNine:Class;
+		[Embed(source = "levels/trashcan.png")] private var LevelThirty:Class;
+		[Embed(source = "levels/treasure-chest.png")] private var LevelThirtyOne:Class;
+		[Embed(source = "levels/umbrella.png")] private var LevelThirtyTwo:Class;
+		[Embed(source = "levels/watch.png")] private var LevelThirtyThree:Class;
 		
 		private var buttonBackground:FlxSprite;
 		private var buttonBackgroundOn:FlxSprite;
@@ -50,23 +70,24 @@ package com.butr0s.Nonogram
 				FlxG.levels.push( { 'levelData':LevelEleven, 'description':'Gameboy', 'completed':'No' } );
 				FlxG.levels.push( { 'levelData':LevelTwelve, 'description':'Heart', 'completed':'No' } );
 				FlxG.levels.push( { 'levelData':LevelThirteen, 'description':'House', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Japan', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Castle', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelFourteen, 'description':'Japan', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelFifteen, 'description':'Lock', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelSixteen, 'description':'Mario', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelSeventeen, 'description':'Monster', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelEighteen, 'description':'Mushroom', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelNineteen, 'description':'Note', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelTwenty, 'description':'Palm Tree', 'completed':'No' } );
+				
+				FlxG.levels.push( { 'levelData':LevelTwentyOne, 'description':'Pencil', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelTwentyTwo, 'description':'Rabbit', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelTwentyThree, 'description':'Shell', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelTwentyFour, 'description':'Spikes', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelTwentyFive, 'description':'Stairs', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelTwentySix, 'description':'Stopwatch', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelTwentySeven, 'description':'Sword', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelTwentyEight, 'description':'Telephone', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelTwentyNine, 'description':'Tornado', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelThirty, 'description':'Trash Can', 'completed':'No' } );
 			}
 			
 			FlxG.level = 1;
@@ -153,6 +174,40 @@ package com.butr0s.Nonogram
 			}
 			else 
 				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel6, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level 6", 0xff000000, null, 16)));
+			
+			buttonPlacementY += 35;
+			
+			// Level 7
+			if (FlxG.levels[7].completed == 'Yes')
+			{
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel7, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level 7", 0xff000000, null, 16)));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[7].bestTime));
+			}
+			else 
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel7, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level 7", 0xff000000, null, 16)));
+			
+			buttonPlacementY += 35;
+			buttonPlacementX += 110;
+			
+			// Level 8
+			if (FlxG.levels[8].completed == 'Yes')
+			{
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel8, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level 8", 0xff000000, null, 16)));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[8].bestTime));
+			}
+			else 
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel8, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level 8", 0xff000000, null, 16)));
+			
+			buttonPlacementY += 35;
+			
+			// Level 9
+			if (FlxG.levels[9].completed == 'Yes')
+			{
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel9, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level 9", 0xff000000, null, 16)));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[9].bestTime));
+			}
+			else 
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel9, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level 9", 0xff000000, null, 16)));
 			
 			buttonPlacementY += 35;
 			/*
