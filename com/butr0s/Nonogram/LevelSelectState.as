@@ -186,7 +186,7 @@ package com.butr0s.Nonogram
 			else 
 				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel7, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level 7", 0xff000000, null, 16)));
 			
-			buttonPlacementY += 35;
+			buttonPlacementY = 60;		// Reset to top
 			buttonPlacementX += 110;
 			
 			// Level 8
@@ -210,6 +210,138 @@ package com.butr0s.Nonogram
 				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel9, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level 9", 0xff000000, null, 16)));
 			
 			buttonPlacementY += 35;
+			
+			// Level 10
+			if (FlxG.levels[10].completed == 'Yes')
+			{
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel10, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level 10", 0xff000000, null, 16)));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[10].bestTime));
+			}
+			else 
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel10, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level 10", 0xff000000, null, 16)));
+			
+			buttonPlacementY += 35;
+			
+			// Level 11
+			if (FlxG.levels[11].completed == 'Yes')
+			{
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel11, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level 11", 0xff000000, null, 16)));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[11].bestTime));
+			}
+			else 
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel11, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level 11", 0xff000000, null, 16)));
+			
+			buttonPlacementY += 35;
+			
+			// Level 12
+			var i:uint = 12;
+			if (FlxG.levels[i].completed == 'Yes')
+			{
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel12, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[i].bestTime));
+			}
+			else 
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel12, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+			
+			buttonPlacementY += 35;
+			
+			// Level 13
+			i = 13;
+			if (FlxG.levels[i].completed == 'Yes')
+			{
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel13, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[i].bestTime));
+			}
+			else 
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel13, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+			
+			buttonPlacementY += 35;
+			
+			// Level 14
+			i = 14;
+			if (FlxG.levels[i].completed == 'Yes')
+			{
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel14, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[i].bestTime));
+			}
+			else 
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel14, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+			
+			buttonPlacementY = 60;		// Reset to top
+			buttonPlacementX += 110;
+			
+			// Level 15
+			i = 15;
+			if (FlxG.levels[i].completed == 'Yes')
+			{
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel15, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[i].bestTime));
+			}
+			else 
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel15, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+			
+			buttonPlacementY += 35;
+			
+			// Level 16
+			i = 16;
+			if (FlxG.levels[i].completed == 'Yes')
+			{
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel16, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[i].bestTime));
+			}
+			else 
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel16, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+			
+			buttonPlacementY += 35;
+			
+			// Level 17
+			i = 17;
+			if (FlxG.levels[i].completed == 'Yes')
+			{
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel17, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[i].bestTime));
+			}
+			else 
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel17, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+			
+			buttonPlacementY += 35;
+			
+			// Level 18
+			i = 18;
+			if (FlxG.levels[i].completed == 'Yes')
+			{
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel18, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[i].bestTime));
+			}
+			else 
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel18, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+			
+			buttonPlacementY += 35;
+			
+			// Level 19
+			i = 19;
+			if (FlxG.levels[i].completed == 'Yes')
+			{
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel19, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[i].bestTime));
+			}
+			else 
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel19, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+			
+			buttonPlacementY += 35;
+			
+			// Level 20
+			i = 20;
+			if (FlxG.levels[i].completed == 'Yes')
+			{
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel20, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[i].bestTime));
+			}
+			else 
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel20, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+			
+			buttonPlacementY += 35;
+			
 			/*
 			for (var i:int = 1; i <= 20; i++)
 			{

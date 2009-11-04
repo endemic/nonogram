@@ -291,6 +291,7 @@ package com.butr0s.Nonogram
 			if (_filledInBlocks == _totalBlocks && _gameOver == false)
 			{
 				_gameOver = true;
+				var _gameOverDelayTimer:int = 0;
 				FlxG.flash(0xffffffff, 0.5);
 				var _finishedPuzzleOverlay:FlxSprite = new FlxSprite(FlxG.levels[FlxG.level].levelData, 226, 226, false, false);
 				_finishedPuzzleOverlay.scale = new Point(4, 4);	// Scale by a factor of 8
@@ -317,7 +318,7 @@ package com.butr0s.Nonogram
 				FlxG.levels[FlxG.level].bestTime = minutes + ":" + seconds;
 			}
 			
-			if (_gameOver && (FlxG.justPressed(FlxG.B) || FlxG.justPressed(FlxG.A))) 
+			if (_gameOver && (_gameOverDelayTimer += FlxG.elapsed) > 3000 && (FlxG.justPressed(FlxG.B) || FlxG.justPressed(FlxG.A))) 
 			{
 				FlxG.switchState(LevelSelectState);
 			}
