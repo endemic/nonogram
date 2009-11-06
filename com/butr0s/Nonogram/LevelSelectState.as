@@ -115,7 +115,7 @@ package com.butr0s.Nonogram
 			if (FlxG.levels[1].completed == 'Yes')
 			{
 				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel1, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level 1", 0xff000000, null, 16)));
-				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: 2:34"));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[1].bestTime));
 			}
 			else 
 				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel1, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level 1", 0xff000000, null, 16)));
@@ -126,7 +126,7 @@ package com.butr0s.Nonogram
 			if (FlxG.levels[2].completed == 'Yes')
 			{
 				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel2, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level 2", 0xff000000, null, 16)));
-				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: 2:34"));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[2].bestTime));
 			}
 			else 
 				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel2, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level 2", 0xff000000, null, 16)));
@@ -137,7 +137,7 @@ package com.butr0s.Nonogram
 			if (FlxG.levels[3].completed == 'Yes')
 			{
 				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel3, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level 3", 0xff000000, null, 16)));
-				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: 2:34"));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[3].bestTime));
 			}
 			else 
 				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel3, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level 3", 0xff000000, null, 16)));
@@ -148,7 +148,7 @@ package com.butr0s.Nonogram
 			if (FlxG.levels[4].completed == 'Yes')
 			{
 				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel4, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level 4", 0xff000000, null, 16)));
-				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: 2:34"));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[4].bestTime));
 			}
 			else 
 				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel4, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level 4", 0xff000000, null, 16)));
@@ -159,7 +159,7 @@ package com.butr0s.Nonogram
 			if (FlxG.levels[5].completed == 'Yes')
 			{
 				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel5, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level 5", 0xff000000, null, 16)));
-				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: 2:34"));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[5].bestTime));
 			}
 			else 
 				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel5, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level 5", 0xff000000, null, 16)));

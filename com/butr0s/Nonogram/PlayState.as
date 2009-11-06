@@ -27,6 +27,7 @@ package com.butr0s.Nonogram
 		private var _levelSize:int = 15;						// Number of tiles in the puzzle (square)
 		private var _tileSize:int = 16;							// Width of tile used to make up game
 		private var _gameOver:Boolean = false;					// Whether player has lost this particular puzzle or not
+		private var _gameOverDelayTimer:Number = 0;				// A delay after the player wins or loses the puzzle
 		
 		[Embed(source = "images/cursor.png")] private var Cursor:Class;
 		[Embed(source = "images/cursor-arrow.png")] private var CursorArrow:Class;
@@ -291,7 +292,6 @@ package com.butr0s.Nonogram
 			if (_filledInBlocks == _totalBlocks && _gameOver == false)
 			{
 				_gameOver = true;
-				var _gameOverDelayTimer:int = 0;
 				FlxG.flash(0xffffffff, 0.5);
 				var _finishedPuzzleOverlay:FlxSprite = new FlxSprite(FlxG.levels[FlxG.level].levelData, 226, 226, false, false);
 				_finishedPuzzleOverlay.scale = new Point(4, 4);	// Scale by a factor of 8
@@ -318,9 +318,14 @@ package com.butr0s.Nonogram
 				FlxG.levels[FlxG.level].bestTime = minutes + ":" + seconds;
 			}
 			
-			if (_gameOver && (_gameOverDelayTimer += FlxG.elapsed) > 3000 && (FlxG.justPressed(FlxG.B) || FlxG.justPressed(FlxG.A))) 
+			if (_gameOver && _gameOverDelayTimer > 3 && (FlxG.justPressed(FlxG.B) || FlxG.justPressed(FlxG.A))) 
 			{
 				FlxG.switchState(LevelSelectState);
+			}
+			else if (_gameOver) 
+			{
+				_gameOverDelayTimer += FlxG.elapsed;
+				trace(_gameOverDelayTimer);
 			}
 			
 			// Puzzle lose condition
