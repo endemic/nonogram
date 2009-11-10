@@ -62,7 +62,7 @@ package com.butr0s.Nonogram
 			{
 				ok3 = true;
 				FlxG.flash(0xffffff, 0.2);
-				FlxG.quake(0.1, 0.2);
+				FlxG.quake(0.1, 0.15);
 				titleBottom.y += 15;
 				titleTop.y -= 15;
 				this.add(titleJapanese);
@@ -78,7 +78,7 @@ package com.butr0s.Nonogram
 		
 		public function goToEasyLevelSelect():void
 		{
-			FlxG.switchState(LevelSelectState);
+			FlxG.switchState(EasyLevelSelectState);
 		}
 		
 		public function goToHardLevelSelect():void

@@ -14,6 +14,7 @@ package com.butr0s.Nonogram
 		private var _timeLeft:Number = 1801;					// Time left to solve the puzzle (in seconds) - extra second is so 30:00 displays for first second
 		private var _cursorBlockX:int = 0;						// The X block the player's cursor occupies within the 15x15 (or 10x10, etc.) puzzle
 		private var _cursorBlockY:int = 0;						// The Y block
+		private var _moveDelay:int = 0; 						// Delay factor for holding down key to move cursor
 		private var _verticalClues:FlxArray = new FlxArray;		// Clues for columns
 		private var _horizontalClues:FlxArray = new FlxArray;	// Clues for rows
 		private var _horizontalArrow:FlxSprite;					// Arrow that helps show what clue box you should look at
@@ -198,30 +199,74 @@ package com.butr0s.Nonogram
 				// Move cursor
 				if (FlxG.justPressed(FlxG.UP) && _cursorBlockY > 0)
 				{
+					_moveDelay = 0;
 					_cursor.y -= _tileSize;
 					_horizontalArrow.y -= _tileSize;
 					_cursorBlockY--;
 				}
+				else if (FlxG.pressed(FlxG.UP) && _cursorBlockY > 0)
+				{
+					if (++_moveDelay % 15 == 0)
+					{
+						_moveDelay = 0;
+						_cursor.y -= _tileSize;
+						_horizontalArrow.y -= _tileSize;
+						_cursorBlockY--;
+					}
+				}
 				if (FlxG.justPressed(FlxG.DOWN) && _cursorBlockY < _levelSize - 1)
 				{
+					_moveDelay = 0;
 					_cursor.y += _tileSize;
 					_horizontalArrow.y += _tileSize;
 					_cursorBlockY++;
 				}
+				else if (FlxG.pressed(FlxG.DOWN) && _cursorBlockY < _levelSize - 1)
+				{
+					if (++_moveDelay % 15 == 0)
+					{
+						_moveDelay = 0;
+						_cursor.y += _tileSize;
+						_horizontalArrow.y += _tileSize;
+						_cursorBlockY++;
+					}
+				}
 				if (FlxG.justPressed(FlxG.LEFT) && _cursorBlockX > 0)
 				{
+					_moveDelay = 0;
 					_cursor.x -= _tileSize;
 					_verticalArrow.x -= _tileSize;
 					_cursorBlockX--;
 				}
+				else if (FlxG.pressed(FlxG.LEFT) && _cursorBlockX > 0)
+				{
+					if (++_moveDelay % 15 == 0)
+					{
+						_moveDelay = 0;
+						_cursor.x -= _tileSize;
+						_verticalArrow.x -= _tileSize;
+						_cursorBlockX--;
+					}
+				}
 				if (FlxG.justPressed(FlxG.RIGHT) && _cursorBlockX < _levelSize - 1)
 				{
+					_moveDelay = 0;
 					_cursor.x += _tileSize;
 					_verticalArrow.x += _tileSize;
 					_cursorBlockX++;
 				}
+				else if (FlxG.pressed(FlxG.RIGHT) && _cursorBlockX < _levelSize - 1) 
+				{
+					if (++_moveDelay % 15 == 0)
+					{
+						_moveDelay = 0;
+						_cursor.x += _tileSize;
+						_verticalArrow.x += _tileSize;
+						_cursorBlockX++;
+					}
+				}
 			
-				if (FlxG.justPressed(FlxG.A))
+				if (FlxG.justPressed(FlxG.B))
 				{
 					// Hit!
 					if (_level.getPixel(_cursorBlockX, _cursorBlockY).toString(16) == "0" && _tiles[_cursorBlockX][_cursorBlockY].health != 2)
@@ -268,7 +313,7 @@ package com.butr0s.Nonogram
 				}
 			
 				// Mark a block for reference - don't allow marking of tiles that have already been filled in
-				if (FlxG.justPressed(FlxG.B) && _tiles[_cursorBlockX][_cursorBlockY].health == 0 && _tiles[_cursorBlockX][_cursorBlockY].health != 2)
+				if (FlxG.justPressed(FlxG.A) && _tiles[_cursorBlockX][_cursorBlockY].health == 0 && _tiles[_cursorBlockX][_cursorBlockY].health != 2)
 				{
 					_tiles[_cursorBlockX][_cursorBlockY].specificFrame(1);
 
@@ -281,7 +326,7 @@ package com.butr0s.Nonogram
 					// This is stupid, but I don't want to create a whole 'nother 2D array to store this info... so it's going in the "health" var
 					_tiles[_cursorBlockX][_cursorBlockY].health = 1;
 				}
-				else if (FlxG.justPressed(FlxG.B) && _tiles[_cursorBlockX][_cursorBlockY].health == 1 && _tiles[_cursorBlockX][_cursorBlockY].health != 2)	// Change "marked" tile back to blank
+				else if (FlxG.justPressed(FlxG.A) && _tiles[_cursorBlockX][_cursorBlockY].health == 1 && _tiles[_cursorBlockX][_cursorBlockY].health != 2)	// Change "marked" tile back to blank
 				{
 					_tiles[_cursorBlockX][_cursorBlockY].specificFrame(0);
 					_tiles[_cursorBlockX][_cursorBlockY].health = 0;
@@ -315,27 +360,35 @@ package com.butr0s.Nonogram
 				if (minutes.length < 2) minutes = "0" + minutes;
 				if (seconds.length < 2) seconds = "0" + seconds;
 				
-				FlxG.levels[FlxG.level].bestTime = minutes + ":" + seconds;
+				//if (minutes + ":" + seconds > FlxG.levels[FlxG.level].bestTime)
+					FlxG.levels[FlxG.level].bestTime = minutes + ":" + seconds;
 			}
 			
-			if (_gameOver && _gameOverDelayTimer > 3 && (FlxG.justPressed(FlxG.B) || FlxG.justPressed(FlxG.A))) 
+			if (_gameOver && _gameOverDelayTimer > 1 && (FlxG.justPressed(FlxG.B) || FlxG.justPressed(FlxG.A))) 
 			{
 				FlxG.switchState(LevelSelectState);
 			}
 			else if (_gameOver) 
 			{
 				_gameOverDelayTimer += FlxG.elapsed;
-				trace(_gameOverDelayTimer);
+				//trace(_gameOverDelayTimer);
 			}
 			
 			// Puzzle lose condition
 			if (_timeLeft <= 0 && _gameOver == false)
 			{
 				_gameOver = true;
-				
-				_timer.setText("00:00");
 				FlxG.quake(0.05, 0.5);			// Intensity, duration
 				FlxG.flash(0xffffffff, 0.5);
+				_timer.setText("00:00");
+				//var _finishedPuzzleOverlay:FlxSprite = new FlxSprite(FlxG.levels[FlxG.level].levelData, 226, 226, false, false);
+				//_finishedPuzzleOverlay.scale = new Point(4, 4);	// Scale by a factor of 8
+				this.add(new FlxSprite(null, 120, 120, false, false, 240, 240, 0xffffffff));		// White background
+				//this.add(_finishedPuzzleOverlay);	// Overlay of puzzle w/o lines
+				
+				this.add(new FlxText(115, 160, 250, 200, "You lose!", 0x000000, null, 20, "center"));
+				//this.add(new FlxText(135, 275, 200, 200, FlxG.levels[FlxG.level].description, 0x000000, null, 16, "center"));
+				this.add(new FlxText(135, 300, 200, 200, "Press X or C to continue", 0x000000, null, 12, "center"));
 				
 				_horizontalArrow.visible = false;	// Hide the cursor position indicator helpers
 				_verticalArrow.visible = false;

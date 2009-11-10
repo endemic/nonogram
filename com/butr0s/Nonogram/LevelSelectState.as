@@ -91,10 +91,6 @@ package com.butr0s.Nonogram
 			}
 			
 			FlxG.level = 1;
-			
-			// DEBUG
-			FlxG.levels[2].completed = 'Yes';
-			FlxG.levels[3].completed = 'Yes';
 						
 			// Set graphic for mouse cursor
 			FlxG.setCursor(MouseCursor);
@@ -103,7 +99,7 @@ package com.butr0s.Nonogram
 			this.add(new FlxSprite(Background, 0, 0, false, false));
 			
 			// Set up descriptive text
-			this.add(new FlxText(15, 25, 300, 50, "Select puzzle (easy)", 0x000000, null, 24, "left"));
+			this.add(new FlxText(15, 25, 300, 50, "Select puzzle (hard)", 0x000000, null, 24, "left"));
 			
 			// Set up button to return to the title screen
 			this.add(new FlxButton(5, 315, new FlxSprite(null, 0, 0, false, false, 200, 25, 0x00ffffff), goToMenu, null, new FlxText(0, 0, 200, 25, "Back to main menu", 0x000000, null, 16), new FlxText(0, 0, 200, 25, "Back to main menu", 0xcccccc, null, 16)));
