@@ -37,7 +37,6 @@
 		[Embed(source = "images/tiles.png")] private var Tiles:Class;
 		[Embed(source = "images/particle.png")] private var Particle:Class;
 		[Embed(source = "images/mark-particle.png")] private var MarkParticle:Class;
-		[Embed(source = "levels/castle.png")] private var LevelOne:Class;
 		
 		[Embed(source = "sounds/dud.mp3")] private var DudSound:Class;
 		[Embed(source = "sounds/hit.mp3")] private var HitSound:Class;
@@ -68,11 +67,11 @@
 			}
 			
 			// Set up horizontal lines that help show subsections of the puzzle
-			this.add(new FlxSprite(null, 120, 119 + (5 * _tileSize), false, false, _tileSize * 15, 1, 0xff333333));
+			this.add(new FlxSprite(null, 120, 119 + (5 * _tileSize), false, false, _tileSize * _levelSize, 1, 0xff333333));
 			//this.add(new FlxSprite(null, 120, 119 + (10 * _tileSize), false, false, _tileSize * 15, 1, 0xff333333));
 			
 			// Set up vertical lines that help show subsections of the puzzle
-			this.add(new FlxSprite(null, 120 + (5 * _tileSize), 120, false, false, 1, _tileSize * 15, 0xff333333));
+			this.add(new FlxSprite(null, 120 + (5 * _tileSize), 120, false, false, 1, _tileSize * _levelSize, 0xff333333));
 			//this.add(new FlxSprite(null, 120 + (10 * _tileSize), 120, false, false, 1, _tileSize * 15, 0xff333333));
 			
 			// Set up cursor
@@ -340,7 +339,7 @@
 				FlxG.flash(0xffffffff, 0.5);
 				var _finishedPuzzleOverlay:FlxSprite = new FlxSprite(FlxG.levels[FlxG.level].levelData, 226, 226, false, false);
 				_finishedPuzzleOverlay.scale = new Point(4, 4);	// Scale by a factor of 8
-				this.add(new FlxSprite(null, 120, 120, false, false, 240, 240, 0xffffffff));		// White background
+				this.add(new FlxSprite(null, 120, 120, false, false, 160, 160, 0xffffffff));		// White background
 				this.add(_finishedPuzzleOverlay);	// Overlay of puzzle w/o lines
 				
 				this.add(new FlxText(115, 160, 250, 200, "Congratulations!", 0x000000, null, 20, "center"));
@@ -366,7 +365,7 @@
 			
 			if (_gameOver && _gameOverDelayTimer > 1 && (FlxG.justPressed(FlxG.B) || FlxG.justPressed(FlxG.A))) 
 			{
-				FlxG.switchState(LevelSelectState);
+				FlxG.switchState(EasyLevelSelectState);
 			}
 			else if (_gameOver) 
 			{
@@ -381,13 +380,9 @@
 				FlxG.quake(0.05, 0.5);			// Intensity, duration
 				FlxG.flash(0xffffffff, 0.5);
 				_timer.setText("00:00");
-				//var _finishedPuzzleOverlay:FlxSprite = new FlxSprite(FlxG.levels[FlxG.level].levelData, 226, 226, false, false);
-				//_finishedPuzzleOverlay.scale = new Point(4, 4);	// Scale by a factor of 8
-				this.add(new FlxSprite(null, 120, 120, false, false, 240, 240, 0xffffffff));		// White background
-				//this.add(_finishedPuzzleOverlay);	// Overlay of puzzle w/o lines
+				this.add(new FlxSprite(null, 120, 120, false, false, 160, 160, 0xffffffff));		// White background
 				
 				this.add(new FlxText(115, 160, 250, 200, "You lose!", 0x000000, null, 20, "center"));
-				//this.add(new FlxText(135, 275, 200, 200, FlxG.levels[FlxG.level].description, 0x000000, null, 16, "center"));
 				this.add(new FlxText(135, 300, 200, 200, "Press X or C to continue", 0x000000, null, 12, "center"));
 				
 				_horizontalArrow.visible = false;	// Hide the cursor position indicator helpers

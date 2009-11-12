@@ -37,7 +37,6 @@ package com.butr0s.Nonogram
 		[Embed(source = "images/tiles.png")] private var Tiles:Class;
 		[Embed(source = "images/particle.png")] private var Particle:Class;
 		[Embed(source = "images/mark-particle.png")] private var MarkParticle:Class;
-		[Embed(source = "levels/castle.png")] private var LevelOne:Class;
 		
 		[Embed(source = "sounds/dud.mp3")] private var DudSound:Class;
 		[Embed(source = "sounds/hit.mp3")] private var HitSound:Class;

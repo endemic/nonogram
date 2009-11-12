@@ -11,76 +11,13 @@
 		[Embed(source = "images/level-select-complete-button.png")] private var ButtonCompleteBackground:Class;
 		[Embed(source = "images/level-select-button-hover.png")] private var ButtonBackgroundHover:Class;
 		[Embed(source = "images/level-select-complete-button-hover.png")] private var ButtonCompleteBackgroundHover:Class;
-		
-		[Embed(source = "levels/easy/cube.png")] private var LevelOne:Class;
-		[Embed(source = "levels/bomb.png")] private var LevelTwo:Class;
-		[Embed(source = "levels/bottle.png")] private var LevelThree:Class;
-		[Embed(source = "levels/boulder.png")] private var LevelFour:Class;
-		[Embed(source = "levels/candle.png")] private var LevelFive:Class;
-		[Embed(source = "levels/castle.png")] private var LevelSix:Class;
-		[Embed(source = "levels/cherry.png")] private var LevelSeven:Class;
-		[Embed(source = "levels/coin.png")] private var LevelEight:Class;
-		[Embed(source = "levels/dog.png")] private var LevelNine:Class;
-		[Embed(source = "levels/floppy-disk.png")] private var LevelTen:Class;
-		[Embed(source = "levels/gameboy.png")] private var LevelEleven:Class;
-		[Embed(source = "levels/heart.png")] private var LevelTwelve:Class;
-		[Embed(source = "levels/house.png")] private var LevelThirteen:Class;
-		[Embed(source = "levels/japan.png")] private var LevelFourteen:Class;
-		[Embed(source = "levels/lock.png")] private var LevelFifteen:Class;
-		[Embed(source = "levels/mario.png")] private var LevelSixteen:Class;
-		[Embed(source = "levels/monster.png")] private var LevelSeventeen:Class;
-		[Embed(source = "levels/mushroom.png")] private var LevelEighteen:Class;
-		[Embed(source = "levels/note.png")] private var LevelNineteen:Class;
-		[Embed(source = "levels/palm-tree.png")] private var LevelTwenty:Class;
-		[Embed(source = "levels/pencil.png")] private var LevelTwentyOne:Class;
-		[Embed(source = "levels/rabbit.png")] private var LevelTwentyTwo:Class;
-		[Embed(source = "levels/shell.png")] private var LevelTwentyThree:Class;
-		[Embed(source = "levels/spikes.png")] private var LevelTwentyFour:Class;
-		[Embed(source = "levels/stairs.png")] private var LevelTwentyFive:Class;
-		[Embed(source = "levels/stopwatch.png")] private var LevelTwentySix:Class;
-		[Embed(source = "levels/sword.png")] private var LevelTwentySeven:Class;
-		[Embed(source = "levels/telephone.png")] private var LevelTwentyEight:Class;
-		[Embed(source = "levels/tornado.png")] private var LevelTwentyNine:Class;
-		[Embed(source = "levels/trashcan.png")] private var LevelThirty:Class;
-		[Embed(source = "levels/treasure-chest.png")] private var LevelThirtyOne:Class;
-		[Embed(source = "levels/umbrella.png")] private var LevelThirtyTwo:Class;
-		[Embed(source = "levels/watch.png")] private var LevelThirtyThree:Class;
-		
+
 		private var buttonBackground:FlxSprite;
 		private var buttonBackgroundOn:FlxSprite;
 		private var buttonText:FlxText;
 
 		override public function EasyLevelSelectState():void
-		{
-			// Set up level array data
-			if (!FlxG.levels.length) 
-			{
-				FlxG.levels = new FlxArray();
-				FlxG.levels.push( { } );	// Push an empty object to fill the '0' position
-				FlxG.levels.push( { 'levelData':LevelOne, 'description':'Cube', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelTwo, 'description':'Bomb', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThree, 'description':'Bottle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelFour, 'description':'Boulder', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelFive, 'description':'Candle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelSix, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelSeven, 'description':'Cherry', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelEight, 'description':'Coin', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelNine, 'description':'Dog', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelTen, 'description':'Floppy Disk', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelEleven, 'description':'Gameboy', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelTwelve, 'description':'Heart', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThirteen, 'description':'House', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelFourteen, 'description':'Japan', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelFifteen, 'description':'Lock', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelSixteen, 'description':'Mario', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelSeventeen, 'description':'Monster', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelEighteen, 'description':'Mushroom', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelNineteen, 'description':'Note', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelTwenty, 'description':'Palm Tree', 'completed':'No' } );
-			}
-			
-			FlxG.level = 1;
-						
+		{				
 			// Set graphic for mouse cursor
 			FlxG.setCursor(MouseCursor);
 			
@@ -327,25 +264,17 @@
 			
 			buttonPlacementY += 35;
 			
-			/*
-			for (var i:int = 1; i <= 20; i++)
+			// Level 21
+			i = 21;
+			if (FlxG.levels[i].completed == 'Yes')
 			{
-				if (FlxG.levels[i].completed == 'Yes')
-				{
-					this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
-					this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: 2:34"));
-				}
-				else 
-					this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
-					
-				buttonPlacementY += 35;
-				if (i % 7 == 0) 
-				{
-					buttonPlacementX += 110;
-					buttonPlacementY = 60;
-				}
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonCompleteBackground), goToLevel21, new FlxSprite(ButtonCompleteBackgroundHover) , new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+				this.add(new FlxText(buttonPlacementX + 23, buttonPlacementY + 22, 100, 16, "Best: " + FlxG.levels[i].bestTime));
 			}
-			*/
+			else 
+				this.add(new FlxButton(buttonPlacementX, buttonPlacementY, new FlxSprite(ButtonBackground), goToLevel21, new FlxSprite(ButtonBackgroundHover), new FlxText(23, 1, 110, 25, "Level " + i, 0xff000000, null, 16)));
+			
+			buttonPlacementY += 35;
 		}
 
 		override public function update():void
@@ -373,6 +302,7 @@
 		private function goToLevel18():void { FlxG.level = 18; FlxG.switchState(EasyPlayState); }
 		private function goToLevel19():void { FlxG.level = 19; FlxG.switchState(EasyPlayState); }
 		private function goToLevel20():void { FlxG.level = 20; FlxG.switchState(EasyPlayState); }
+		private function goToLevel21():void { FlxG.level = 21; FlxG.switchState(EasyPlayState); }
 		
 		
 		private function goToLevel(number:int = 1):void
