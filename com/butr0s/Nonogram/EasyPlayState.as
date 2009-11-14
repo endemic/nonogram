@@ -337,14 +337,14 @@
 			{
 				_gameOver = true;
 				FlxG.flash(0xffffffff, 0.5);
-				var _finishedPuzzleOverlay:FlxSprite = new FlxSprite(FlxG.levels[FlxG.level].levelData, 226, 226, false, false);
+				var _finishedPuzzleOverlay:FlxSprite = new FlxSprite(FlxG.levels[FlxG.level].levelData, 195, 182, false, false);
 				_finishedPuzzleOverlay.scale = new Point(4, 4);	// Scale by a factor of 8
 				this.add(new FlxSprite(null, 120, 120, false, false, 160, 160, 0xffffffff));		// White background
 				this.add(_finishedPuzzleOverlay);	// Overlay of puzzle w/o lines
 				
-				this.add(new FlxText(115, 160, 250, 200, "Congratulations!", 0x000000, null, 20, "center"));
-				this.add(new FlxText(135, 275, 200, 200, FlxG.levels[FlxG.level].description, 0x000000, null, 16, "center"));
-				this.add(new FlxText(135, 300, 200, 200, "Press X or C to continue", 0x000000, null, 12, "center"));
+				this.add(new FlxText(76, 130, 250, 200, "Great!", 0x000000, null, 20, "center"));
+				this.add(new FlxText(101, 215, 200, 200, FlxG.levels[FlxG.level].description, 0x000000, null, 16, "center"));
+				this.add(new FlxText(101, 240, 200, 200, "Press X or C\nto continue", 0x000000, null, 12, "center"));
 				
 				_horizontalArrow.visible = false;	// Hide the cursor position indicator helpers
 				_verticalArrow.visible = false;
@@ -382,8 +382,8 @@
 				_timer.setText("00:00");
 				this.add(new FlxSprite(null, 120, 120, false, false, 160, 160, 0xffffffff));		// White background
 				
-				this.add(new FlxText(115, 160, 250, 200, "You lose!", 0x000000, null, 20, "center"));
-				this.add(new FlxText(135, 300, 200, 200, "Press X or C to continue", 0x000000, null, 12, "center"));
+				this.add(new FlxText(76, 130, 250, 200, "You lose!", 0x000000, null, 20, "center"));
+				this.add(new FlxText(101, 240, 200, 200, "Press X or C\nto continue", 0x000000, null, 12, "center"));
 				
 				_horizontalArrow.visible = false;	// Hide the cursor position indicator helpers
 				_verticalArrow.visible = false;

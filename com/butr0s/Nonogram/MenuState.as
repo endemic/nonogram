@@ -23,7 +23,7 @@ package com.butr0s.Nonogram
 		static private var playedAnimation:Boolean = false;
 		
 		[Embed(source = "levels/easy/cube.png")] private var LevelOneEasy:Class;
-		[Embed(source = "levels/easy/cube.png")] private var LevelTwoEasy:Class;
+		[Embed(source = "levels/easy/easy.png")] private var LevelTwoEasy:Class;
 		[Embed(source = "levels/easy/cube.png")] private var LevelThreeEasy:Class;
 		[Embed(source = "levels/easy/cube.png")] private var LevelFourEasy:Class;
 		[Embed(source = "levels/easy/cube.png")] private var LevelFiveEasy:Class;
@@ -102,8 +102,8 @@ package com.butr0s.Nonogram
 			{
 				FlxG.levels = new FlxArray();
 				FlxG.levels.push( { } );	// Push an empty object to fill the '0' position
-				FlxG.levels.push( { 'levelData':LevelOneEasy, 'description':'Apple', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelTwoEasy, 'description':'Bomb', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelOneEasy, 'description':'Cube', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelTwoEasy, 'description':'Dust Speck', 'completed':'No' } );
 				FlxG.levels.push( { 'levelData':LevelThreeEasy, 'description':'Bottle', 'completed':'No' } );
 				FlxG.levels.push( { 'levelData':LevelFourEasy, 'description':'Boulder', 'completed':'No' } );
 				FlxG.levels.push( { 'levelData':LevelFiveEasy, 'description':'Candle', 'completed':'No' } );

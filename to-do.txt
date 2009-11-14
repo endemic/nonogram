@@ -1,4 +1,8 @@
-﻿* Design main menu
-* Design level selection menu
-* Add cookies to "save" progress
-* 
+﻿* Add cookies to "save" progress - SharedObject
+* Work through tweaks to "game over" state on easy puzzles [DONE]
+* Get some more easy puzzles done [INPROGRESS]
+* Work on balancing hard puzzles
+* Got to have some sort of music
+* Make sure better times for puzzles overwrite the old ones
+* Fix easy puzzle background [DONE]
+* Add tutorial
