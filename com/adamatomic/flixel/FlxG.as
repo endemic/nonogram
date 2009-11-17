@@ -9,6 +9,7 @@ package com.adamatomic.flixel
 	import flash.media.SoundTransform;
 	import flash.net.URLRequest;
 	import flash.net.navigateToURL;
+	import flash.net.SharedObject;
 	
 	//@desc		This is a global helper class full of useful functions for audio, input, basic info, and the camera system
 	public class FlxG
@@ -23,6 +24,7 @@ package com.adamatomic.flixel
 		static public var levels:FlxArray;
 		static public var score:uint;
 		static public var scores:FlxArray;
+		static public var cookie:SharedObject = SharedObject.getLocal('Flixel');
 		
 		//@desc These are the constants for use with the Pressed and Releases functions
 		static public const LEFT:uint = 0;

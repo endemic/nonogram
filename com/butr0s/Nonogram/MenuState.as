@@ -102,49 +102,69 @@ package com.butr0s.Nonogram
 			{
 				FlxG.levels = new FlxArray();
 				FlxG.levels.push( { } );	// Push an empty object to fill the '0' position
-				FlxG.levels.push( { 'levelData':LevelOneEasy, 'description':'Cube', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelTwoEasy, 'description':'Dust Speck', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThreeEasy, 'description':'Bottle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelFourEasy, 'description':'Boulder', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelFiveEasy, 'description':'Candle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelSixEasy, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelSevenEasy, 'description':'Cherry', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelEightEasy, 'description':'Coin', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelNineEasy, 'description':'Dog', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelTenEasy, 'description':'Floppy Disk', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelElevenEasy, 'description':'Gameboy', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelTwelveEasy, 'description':'Heart', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThirteenEasy, 'description':'House', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelFourteenEasy, 'description':'Japan', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelFifteenEasy, 'description':'Lock', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelSixteenEasy, 'description':'Mario', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelSeventeenEasy, 'description':'Monster', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelEighteenEasy, 'description':'Mushroom', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelNineteenEasy, 'description':'Note', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelTwentyEasy, 'description':'Palm Tree', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelTwentyOneEasy, 'description':'Palm Tree', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelOneEasy, 'description':'Bomb', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelTwoEasy, 'description':'Heart', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelThreeEasy, 'description':'Trash Can', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelFourEasy, 'description':'Pill', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelFiveEasy, 'description':'Padlock', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelSixEasy, 'description':'Castle', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelSevenEasy, 'description':'Cherry', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelEightEasy, 'description':'Coin', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelNineEasy, 'description':'Dog', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelTenEasy, 'description':'Floppy Disk', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelElevenEasy, 'description':'Gameboy', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelTwelveEasy, 'description':'Heart', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelThirteenEasy, 'description':'House', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelFourteenEasy, 'description':'Japan', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelFifteenEasy, 'description':'Lock', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelSixteenEasy, 'description':'Mario', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelSeventeenEasy, 'description':'Monster', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelEighteenEasy, 'description':'Mushroom', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelNineteenEasy, 'description':'Note', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelTwentyEasy, 'description':'Palm Tree', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelTwentyOneEasy, 'description':'Palm Tree', 'completed':'No', 'bestTime':'30:00' } );
 				
-				FlxG.levels.push( { 'levelData':LevelOneHard, 'description':'Apple', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelTwoHard, 'description':'Bomb', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThreeHard, 'description':'Bottle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelFourHard, 'description':'Boulder', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelFiveHard, 'description':'Candle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelSixHard, 'description':'Castle', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelSevenHard, 'description':'Cherry', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelEightHard, 'description':'Coin', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelNineHard, 'description':'Dog', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelTenHard, 'description':'Floppy Disk', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelElevenHard, 'description':'Gameboy', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelTwelveHard, 'description':'Heart', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelThirteenHard, 'description':'House', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelFourteenHard, 'description':'Japan', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelFifteenHard, 'description':'Lock', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelSixteenHard, 'description':'Mario', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelSeventeenHard, 'description':'Monster', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelEighteenHard, 'description':'Mushroom', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelNineteenHard, 'description':'Note', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelTwentyHard, 'description':'Palm Tree', 'completed':'No' } );
-				FlxG.levels.push( { 'levelData':LevelTwentyOneHard, 'description':'Palm Tree', 'completed':'No' } );
+				FlxG.levels.push( { 'levelData':LevelOneHard, 'description':'Apple', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelTwoHard, 'description':'Bomb', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelThreeHard, 'description':'Bottle', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelFourHard, 'description':'Boulder', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelFiveHard, 'description':'Candle', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelSixHard, 'description':'Castle', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelSevenHard, 'description':'Cherry', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelEightHard, 'description':'Coin', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelNineHard, 'description':'Dog', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelTenHard, 'description':'Floppy Disk', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelElevenHard, 'description':'Gameboy', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelTwelveHard, 'description':'Heart', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelThirteenHard, 'description':'House', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelFourteenHard, 'description':'Japan', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelFifteenHard, 'description':'Lock', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelSixteenHard, 'description':'Mario', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelSeventeenHard, 'description':'Monster', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelEighteenHard, 'description':'Mushroom', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelNineteenHard, 'description':'Note', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelTwentyHard, 'description':'Palm Tree', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelTwentyOneHard, 'description':'Palm Tree', 'completed':'No', 'bestTime':'30:00' } );
+			}
+			
+			// Create SharedObject data if it doesn't exist
+			if (!FlxG.cookie.data.levels) 
+			{
+				FlxG.cookie.data.levels = new Array;
+				for (var i:int = 0, j:int = FlxG.levels.length; i < j; i++) 
+				{
+					FlxG.cookie.data.levels.push({ 'completed':'No', 'bestTime':'' });
+				}
+			}
+			
+			// Load saved data from SharedObject
+			for (i = 0, j = FlxG.levels.length; i < j; i++) 
+			{
+				if (FlxG.cookie.data.levels[i].completed == 'Yes') 
+				{
+					FlxG.levels[i].completed = 'Yes';
+					FlxG.levels[i].bestTime = FlxG.cookie.data.levels[i].bestTime;
+				}
 			}
 		}
 
