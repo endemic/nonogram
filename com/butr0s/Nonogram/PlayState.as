@@ -359,8 +359,17 @@ package com.butr0s.Nonogram
 				if (minutes.length < 2) minutes = "0" + minutes;
 				if (seconds.length < 2) seconds = "0" + seconds;
 				
-				//if (minutes + ":" + seconds > FlxG.levels[FlxG.level].bestTime)
+				// Check if new complete time is faster
+				var tmp:String = FlxG.levels[FlxG.level].bestTime.split(':');
+				if (minutes <= tmp[0] && seconds < tmp[1]) 
+				{
 					FlxG.levels[FlxG.level].bestTime = minutes + ":" + seconds;
+					FlxG.cookie.data.levels[FlxG.level].bestTime = minutes + ":" + seconds;
+				}
+				
+				FlxG.levels[FlxG.level].completed = 'Yes';
+				FlxG.cookie.data.levels[FlxG.level].completed = "Yes";
+				FlxG.cookie.flush(1000);		// Save the SharedObject data
 			}
 			
 			if (_gameOver && _gameOverDelayTimer > 1 && (FlxG.justPressed(FlxG.B) || FlxG.justPressed(FlxG.A))) 
