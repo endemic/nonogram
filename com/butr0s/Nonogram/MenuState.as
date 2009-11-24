@@ -186,7 +186,7 @@ package com.butr0s.Nonogram
 					// "Hard" difficulty button
 					this.add(new FlxButton((FlxG.width - 200) / 2, 240, new FlxSprite(null, 0, 0, false, false, 200, 30, 0xffdddddd), goToHardLevelSelect, new FlxSprite(null, 0, 0, false, false, 200, 30, 0xff333333), new FlxText(0, 3, 200, 30, "Hard", 0xff000000, null, 16, "center"), new FlxText(0, 3, 200, 30, "Hard", 0xffcccccc, null, 16, "center")));
 					// "How to play" button
-					this.add(new FlxButton((FlxG.width - 200) / 2, 280, new FlxSprite(null, 0, 0, false, false, 200, 30, 0xffdddddd), null, new FlxSprite(null, 0, 0, false, false, 200, 30, 0xff333333), new FlxText(0, 3, 200, 30, "How to Play", 0xff000000, null, 16, "center"), new FlxText(0, 3, 200, 30, "How to Play", 0xffcccccc, null, 16, "center")));
+					this.add(new FlxButton((FlxG.width - 200) / 2, 280, new FlxSprite(null, 0, 0, false, false, 200, 30, 0xffdddddd), goToTutorial, new FlxSprite(null, 0, 0, false, false, 200, 30, 0xff333333), new FlxText(0, 3, 200, 30, "How to Play", 0xff000000, null, 16, "center"), new FlxText(0, 3, 200, 30, "How to Play", 0xffcccccc, null, 16, "center")));
 				}
 			}
 			else
@@ -221,21 +221,26 @@ package com.butr0s.Nonogram
 					// "Hard" difficulty button
 					this.add(new FlxButton((FlxG.width - 200) / 2, 240, new FlxSprite(null, 0, 0, false, false, 200, 30, 0xffdddddd), goToHardLevelSelect, new FlxSprite(null, 0, 0, false, false, 200, 30, 0xff333333), new FlxText(0, 3, 200, 30, "Hard", 0xff000000, null, 16, "center"), new FlxText(0, 3, 200, 30, "Hard", 0xffcccccc, null, 16, "center")));
 					// "How to play" button
-					this.add(new FlxButton((FlxG.width - 200) / 2, 280, new FlxSprite(null, 0, 0, false, false, 200, 30, 0xffdddddd), null, new FlxSprite(null, 0, 0, false, false, 200, 30, 0xff333333), new FlxText(0, 3, 200, 30, "How to Play", 0xff000000, null, 16, "center"), new FlxText(0, 3, 200, 30, "How to Play", 0xffcccccc, null, 16, "center")));
+					this.add(new FlxButton((FlxG.width - 200) / 2, 280, new FlxSprite(null, 0, 0, false, false, 200, 30, 0xffdddddd), goToTutorial, new FlxSprite(null, 0, 0, false, false, 200, 30, 0xff333333), new FlxText(0, 3, 200, 30, "How to Play", 0xff000000, null, 16, "center"), new FlxText(0, 3, 200, 30, "How to Play", 0xffcccccc, null, 16, "center")));
 					
 					playedAnimation = true;
 				}
 			}
 		}
 		
-		public function goToEasyLevelSelect():void
+		private function goToEasyLevelSelect():void
 		{
 			FlxG.switchState(EasyLevelSelectState);
 		}
 		
-		public function goToHardLevelSelect():void
+		private function goToHardLevelSelect():void
 		{
 			FlxG.switchState(LevelSelectState);
+		}
+		
+		private function goToTutorial():void
+		{
+			FlxG.switchState(TutorialState);
 		}
 	}
 }
