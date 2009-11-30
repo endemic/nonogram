@@ -112,7 +112,7 @@ package com.butr0s.Nonogram
 				FlxG.levels.push( { 'levelData':LevelEightEasy, 'description':'Coin', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelNineEasy, 'description':'Dog', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelTenEasy, 'description':'Floppy Disk', 'completed':'No', 'bestTime':'30:00' } );
-				FlxG.levels.push( { 'levelData':LevelElevenEasy, 'description':'Gameboy', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelElevenEasy, 'description':'Note', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelTwelveEasy, 'description':'Heart', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelThirteenEasy, 'description':'House', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelFourteenEasy, 'description':'Japan', 'completed':'No', 'bestTime':'30:00' } );
