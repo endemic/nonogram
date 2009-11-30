@@ -56,7 +56,8 @@ package com.butr0s.Nonogram
 		
 		private function nextCard():void
 		{
-			step++;
+			if (cards[step].x < 0) cards[step].x = 0;		// If the previous card hasn't moved into place yet, instantly move it
+			step++;											// Increment the card stack number
 			if (step >= cards.length) FlxG.switchState(MenuState);		// If we've exhausted our stack of tutorial "cards," go back to the main menu
 		}
 		
@@ -64,8 +65,7 @@ package com.butr0s.Nonogram
 		{
 			// Slide new card into place if needed
 			if (cards[step].x < 0) cards[step].x += 5;
-				
-			
+
 			super.update();
 		}
 	}

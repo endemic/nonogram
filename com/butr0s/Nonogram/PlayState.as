@@ -360,7 +360,7 @@ package com.butr0s.Nonogram
 				if (seconds.length < 2) seconds = "0" + seconds;
 				
 				// Check if new complete time is faster
-				var tmp:String = FlxG.levels[FlxG.level].bestTime.split(':');
+				var tmp:Array = FlxG.levels[FlxG.level].bestTime.split(':');
 				if (minutes <= tmp[0] && seconds < tmp[1]) 
 				{
 					FlxG.levels[FlxG.level].bestTime = minutes + ":" + seconds;
