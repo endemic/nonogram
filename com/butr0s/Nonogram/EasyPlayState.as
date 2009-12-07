@@ -41,6 +41,7 @@
 		[Embed(source = "sounds/dud.mp3")] private var DudSound:Class;
 		[Embed(source = "sounds/hit.mp3")] private var HitSound:Class;
 		[Embed(source = "sounds/miss.mp3")] private var MissSound:Class;
+		[Embed(source = "sounds/move.mp3")] private var MoveSound:Class;
 		
 		override public function EasyPlayState():void
 		{
@@ -202,15 +203,17 @@
 					_cursor.y -= _tileSize;
 					_horizontalArrow.y -= _tileSize;
 					_cursorBlockY--;
+					FlxG.play(MoveSound, 0.5);	// Class, volume (0 - 1)
 				}
 				else if (FlxG.pressed(FlxG.UP) && _cursorBlockY > 0)
 				{
-					if (++_moveDelay % 15 == 0)
+					if (++_moveDelay % 20 == 0)
 					{
 						_moveDelay = 0;
 						_cursor.y -= _tileSize;
 						_horizontalArrow.y -= _tileSize;
 						_cursorBlockY--;
+						FlxG.play(MoveSound, 0.5);	// Class, volume (0 - 1)
 					}
 				}
 				if (FlxG.justPressed(FlxG.DOWN) && _cursorBlockY < _levelSize - 1)
@@ -219,15 +222,17 @@
 					_cursor.y += _tileSize;
 					_horizontalArrow.y += _tileSize;
 					_cursorBlockY++;
+					FlxG.play(MoveSound, 0.5);	// Class, volume (0 - 1)
 				}
 				else if (FlxG.pressed(FlxG.DOWN) && _cursorBlockY < _levelSize - 1)
 				{
-					if (++_moveDelay % 15 == 0)
+					if (++_moveDelay % 20 == 0)
 					{
 						_moveDelay = 0;
 						_cursor.y += _tileSize;
 						_horizontalArrow.y += _tileSize;
 						_cursorBlockY++;
+						FlxG.play(MoveSound, 0.5);	// Class, volume (0 - 1)
 					}
 				}
 				if (FlxG.justPressed(FlxG.LEFT) && _cursorBlockX > 0)
@@ -236,15 +241,17 @@
 					_cursor.x -= _tileSize;
 					_verticalArrow.x -= _tileSize;
 					_cursorBlockX--;
+					FlxG.play(MoveSound, 0.5);	// Class, volume (0 - 1)
 				}
 				else if (FlxG.pressed(FlxG.LEFT) && _cursorBlockX > 0)
 				{
-					if (++_moveDelay % 15 == 0)
+					if (++_moveDelay % 20 == 0)
 					{
 						_moveDelay = 0;
 						_cursor.x -= _tileSize;
 						_verticalArrow.x -= _tileSize;
 						_cursorBlockX--;
+						FlxG.play(MoveSound, 0.5);	// Class, volume (0 - 1)
 					}
 				}
 				if (FlxG.justPressed(FlxG.RIGHT) && _cursorBlockX < _levelSize - 1)
@@ -253,15 +260,17 @@
 					_cursor.x += _tileSize;
 					_verticalArrow.x += _tileSize;
 					_cursorBlockX++;
+					FlxG.play(MoveSound, 0.5);	// Class, volume (0 - 1)
 				}
 				else if (FlxG.pressed(FlxG.RIGHT) && _cursorBlockX < _levelSize - 1) 
 				{
-					if (++_moveDelay % 15 == 0)
+					if (++_moveDelay % 20 == 0)
 					{
 						_moveDelay = 0;
 						_cursor.x += _tileSize;
 						_verticalArrow.x += _tileSize;
 						_cursorBlockX++;
+						FlxG.play(MoveSound, 0.5);	// Class, volume (0 - 1)
 					}
 				}
 			
@@ -350,19 +359,20 @@
 				_verticalArrow.visible = false;
 				_cursor.visible = false;
 				
-				var minutes:String = String(Math.floor(_timeLeft / 60));
-				var seconds:String = String(Math.floor(_timeLeft % 60));
+				var tmpMinutes:int = Math.floor(_timeLeft / 60);
+				var tmpSeconds:int = Math.floor(_timeLeft % 60);
 
-				// Pad the minutes/seconds
-				if (minutes.length < 2) minutes = "0" + minutes;
-				if (seconds.length < 2) seconds = "0" + seconds;
 				
 				// Check if new complete time is faster
 				var tmp:Array = FlxG.levels[FlxG.level].bestTime.split(':');
-				if (minutes <= tmp[0] && seconds < tmp[1]) 
+				trace(tmp);
+				trace("minutes:" + tmpMinutes);
+				trace("seconds:" + tmpSeconds);
+				
+				if ((tmpMinutes * 60 + tmpSeconds) < (tmp[0] * 60 + tmp[1]) || FlxG.levels[FlxG.level].bestTime == '')
 				{
-					FlxG.levels[FlxG.level].bestTime = minutes + ":" + seconds;
-					FlxG.cookie.data.levels[FlxG.level].bestTime = minutes + ":" + seconds;
+					FlxG.levels[FlxG.level].bestTime = tmpMinutes + ":" + tmpSeconds;
+					FlxG.cookie.data.levels[FlxG.level].bestTime = tmpMinutes + ":" + tmpSeconds;
 				}
 				
 				FlxG.levels[FlxG.level].completed = 'Yes';
@@ -400,8 +410,8 @@
 			if (_gameOver == false)
 			{
 				_timeLeft -= FlxG.elapsed;
-				minutes = String(Math.floor(_timeLeft / 60));
-				seconds = String(Math.floor(_timeLeft % 60));
+				var minutes:String = String(Math.floor(_timeLeft / 60));
+				var seconds:String = String(Math.floor(_timeLeft % 60));
 
 				// Pad the minutes/seconds
 				if (minutes.length < 2) minutes = "0" + minutes;

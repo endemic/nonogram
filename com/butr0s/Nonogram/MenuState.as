@@ -10,7 +10,7 @@ package com.butr0s.Nonogram
 		[Embed(source = "images/title-top.png")] private var TitleTop:Class;
 		[Embed(source = "images/title-bottom.png")] private var TitleBottom:Class;
 		[Embed(source = "images/title-japanese.png")] private var TitleJapanese:Class;
-		
+		[Embed(source = "sounds/explosion.mp3")] private var ExplosionSound:Class;
 		private var titleTop:FlxSprite;
 		private var titleBottom:FlxSprite;
 		private var titleJapanese:FlxSprite;
@@ -197,6 +197,7 @@ package com.butr0s.Nonogram
 				{
 					ok1 = true;	
 					FlxG.quake(0.01, 0.2);
+					FlxG.play(ExplosionSound, 0.3);	// Class, volume (0 - 1)
 				}
 				
 				if (titleTop.y < 40 && ok1 == true)
@@ -205,6 +206,7 @@ package com.butr0s.Nonogram
 				{
 					ok2 = true;
 					FlxG.quake(0.01, 0.2);
+					FlxG.play(ExplosionSound, 0.3);	// Class, volume (0 - 1)
 				}
 				
 				if (ok1 && ok2 && !ok3)
@@ -212,6 +214,7 @@ package com.butr0s.Nonogram
 					ok3 = true;
 					FlxG.flash(0xffffff, 0.2);
 					FlxG.quake(0.1, 0.15);
+					FlxG.play(ExplosionSound, 0.5);	// Class, volume (0 - 1)
 					titleBottom.y += 15;
 					//titleTop.y -= 15;
 					this.add(titleJapanese);
