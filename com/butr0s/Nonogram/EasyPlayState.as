@@ -30,6 +30,7 @@
 		private var _gameOver:Boolean = false;					// Whether player has lost this particular puzzle or not
 		private var _gameOverDelayTimer:Number = 0;				// A delay after the player wins or loses the puzzle
 		
+		[Embed(source = "images/mouse-cursor.png")] private var MouseCursor:Class;
 		[Embed(source = "images/cursor.png")] private var Cursor:Class;
 		[Embed(source = "images/cursor-arrow.png")] private var CursorArrow:Class;
 		[Embed(source = "images/arrow.png")] private var Arrow:Class;
@@ -181,7 +182,8 @@
 				if (cluesTextVert != "") 
 				{
 					_verticalClues[i].setText(cluesTextVert);
-					_verticalClues[i].y = 108 - (cluesTextVert.length / 2 * 15);
+					//_verticalClues[i].y = 108 - (cluesTextVert.length / 2 * 15);
+					_verticalClues[i].y = 108 - ((cluesTextVert.split("\n").length - 1) * 15);
 				}
 				else
 				{
@@ -353,7 +355,9 @@
 				
 				this.add(new FlxText(76, 130, 250, 200, "Great!", 0x000000, null, 20, "center"));
 				this.add(new FlxText(101, 215, 200, 200, FlxG.levels[FlxG.level].description, 0x000000, null, 16, "center"));
-				this.add(new FlxText(101, 240, 200, 200, "Press X or C\nto continue", 0x000000, null, 12, "center"));
+				this.add(new FlxButton(141, 240, new FlxSprite(null, 0, 0, false, false, 120, 30, 0xffdddddd), goToLevelSelect, new FlxSprite(null, 0, 0, false, false, 120, 30, 0xff333333), new FlxText(0, 3, 120, 30, "Continue", 0xff000000, null, 16, "center"), new FlxText(0, 3, 120, 30, "Continue", 0xffcccccc, null, 16, "center")));
+				FlxG.setCursor(MouseCursor);
+				//this.add(new FlxText(101, 240, 200, 200, "Press X or C\nto continue", 0x000000, null, 12, "center"));
 				
 				_horizontalArrow.visible = false;	// Hide the cursor position indicator helpers
 				_verticalArrow.visible = false;
@@ -362,12 +366,11 @@
 				var tmpMinutes:int = Math.floor(_timeLeft / 60);
 				var tmpSeconds:int = Math.floor(_timeLeft % 60);
 
-				
 				// Check if new complete time is faster
 				var tmp:Array = FlxG.levels[FlxG.level].bestTime.split(':');
-				trace(tmp);
-				trace("minutes:" + tmpMinutes);
-				trace("seconds:" + tmpSeconds);
+				//trace(tmp);
+				//trace("minutes:" + tmpMinutes);
+				//trace("seconds:" + tmpSeconds);
 				
 				if ((tmpMinutes * 60 + tmpSeconds) < (tmp[0] * 60 + tmp[1]) || FlxG.levels[FlxG.level].bestTime == '')
 				{
@@ -379,7 +382,7 @@
 				FlxG.cookie.data.levels[FlxG.level].completed = "Yes";
 				FlxG.cookie.flush(1000);		// Save the SharedObject data
 			}
-			
+/*			
 			if (_gameOver && _gameOverDelayTimer > 1 && (FlxG.justPressed(FlxG.B) || FlxG.justPressed(FlxG.A))) 
 			{
 				FlxG.switchState(EasyLevelSelectState);
@@ -387,9 +390,8 @@
 			else if (_gameOver) 
 			{
 				_gameOverDelayTimer += FlxG.elapsed;
-				//trace(_gameOverDelayTimer);
 			}
-			
+*/		
 			// Puzzle lose condition
 			if (_timeLeft <= 0 && _gameOver == false)
 			{
@@ -400,7 +402,9 @@
 				this.add(new FlxSprite(null, 120, 120, false, false, 160, 160, 0xffffffff));		// White background
 				
 				this.add(new FlxText(76, 130, 250, 200, "You lose!", 0x000000, null, 20, "center"));
-				this.add(new FlxText(101, 240, 200, 200, "Press X or C\nto continue", 0x000000, null, 12, "center"));
+				this.add(new FlxButton(141, 240, new FlxSprite(null, 0, 0, false, false, 120, 30, 0xffdddddd), goToLevelSelect, new FlxSprite(null, 0, 0, false, false, 120, 30, 0xff333333), new FlxText(0, 3, 120, 30, "Continue", 0xff000000, null, 16, "center"), new FlxText(0, 3, 120, 30, "Continue", 0xffcccccc, null, 16, "center")));
+				FlxG.setCursor(MouseCursor);
+				//this.add(new FlxText(101, 240, 200, 200, "Press X or C\nto continue", 0x000000, null, 12, "center"));
 				
 				_horizontalArrow.visible = false;	// Hide the cursor position indicator helpers
 				_verticalArrow.visible = false;
@@ -423,6 +427,10 @@
 			// Call the parent's "update" function
 			super.update();
 		}
-		
+	
+		private function goToLevelSelect():void 
+		{
+			FlxG.switchState(EasyLevelSelectState);
+		}
 	}
 }
