@@ -22,10 +22,10 @@ package com.butr0s.Nonogram
 		private var ok3:Boolean = false;
 		static private var playedAnimation:Boolean = false;
 		
-		[Embed(source = "levels/easy/bomb.png")] private var LevelOneEasy:Class;
-		[Embed(source = "levels/easy/heart.png")] private var LevelTwoEasy:Class;
-		[Embed(source = "levels/easy/trash-can.png")] private var LevelThreeEasy:Class;
-		[Embed(source = "levels/easy/pill.png")] private var LevelFourEasy:Class;
+		[Embed(source = "levels/easy/exclamation-mark.png")] private var LevelOneEasy:Class;
+		[Embed(source = "levels/easy/question-mark.png")] private var LevelTwoEasy:Class;
+		[Embed(source = "levels/easy/emoticon.png")] private var LevelThreeEasy:Class;
+		[Embed(source = "levels/easy/cube.png")] private var LevelFourEasy:Class;
 		[Embed(source = "levels/easy/padlock.png")] private var LevelFiveEasy:Class;
 		[Embed(source = "levels/easy/smiley.png")] private var LevelSixEasy:Class;
 		[Embed(source = "levels/easy/clock.png")] private var LevelSevenEasy:Class;
@@ -35,18 +35,18 @@ package com.butr0s.Nonogram
 		[Embed(source = "levels/easy/note.png")] private var LevelElevenEasy:Class;
 		[Embed(source = "levels/easy/crescent-moon.png")] private var LevelTwelveEasy:Class;
 		[Embed(source = "levels/easy/house.png")] private var LevelThirteenEasy:Class;
-		[Embed(source = "levels/easy/emoticon.png")] private var LevelFourteenEasy:Class;
-		[Embed(source = "levels/easy/exclamation-mark.png")] private var LevelFifteenEasy:Class;
+		[Embed(source = "levels/easy/trash-can.png")] private var LevelFourteenEasy:Class;
+		[Embed(source = "levels/easy/bomb.png")] private var LevelFifteenEasy:Class;
 		[Embed(source = "levels/easy/pill.png")] private var LevelSixteenEasy:Class;
 		[Embed(source = "levels/easy/play-pause.png")] private var LevelSeventeenEasy:Class;
-		[Embed(source = "levels/easy/question-mark.png")] private var LevelEighteenEasy:Class;
+		[Embed(source = "levels/easy/heart.png")] private var LevelEighteenEasy:Class;
 		[Embed(source = "levels/easy/electrical-outlet.png")] private var LevelNineteenEasy:Class;
 		[Embed(source = "levels/easy/speaker.png")] private var LevelTwentyEasy:Class;
 		[Embed(source = "levels/easy/st-johns-arms.png")] private var LevelTwentyOneEasy:Class;
 		
 		[Embed(source = "levels/hard/apple.png")] private var LevelOneHard:Class;
 		[Embed(source = "levels/hard/bomb.png")] private var LevelTwoHard:Class;
-		[Embed(source = "levels/hard/bottle.png")] private var LevelThreeHard:Class;
+		[Embed(source = "levels/hard/telephone.png")] private var LevelThreeHard:Class;
 		[Embed(source = "levels/hard/boulder.png")] private var LevelFourHard:Class;
 		[Embed(source = "levels/hard/candle.png")] private var LevelFiveHard:Class;
 		[Embed(source = "levels/hard/castle.png")] private var LevelSixHard:Class;
@@ -55,14 +55,14 @@ package com.butr0s.Nonogram
 		[Embed(source = "levels/hard/dog.png")] private var LevelNineHard:Class;
 		[Embed(source = "levels/hard/floppy-disk.png")] private var LevelTenHard:Class;
 		[Embed(source = "levels/hard/gameboy.png")] private var LevelElevenHard:Class;
-		[Embed(source = "levels/hard/heart.png")] private var LevelTwelveHard:Class;
+		[Embed(source = "levels/hard/umbrella.png")] private var LevelTwelveHard:Class;
 		[Embed(source = "levels/hard/house.png")] private var LevelThirteenHard:Class;
-		[Embed(source = "levels/hard/japan.png")] private var LevelFourteenHard:Class;
+		[Embed(source = "levels/hard/rabbit.png")] private var LevelFourteenHard:Class;
 		[Embed(source = "levels/hard/lock.png")] private var LevelFifteenHard:Class;
 		[Embed(source = "levels/hard/mario.png")] private var LevelSixteenHard:Class;
-		[Embed(source = "levels/hard/monster.png")] private var LevelSeventeenHard:Class;
+		[Embed(source = "levels/hard/treasure-chest.png")] private var LevelSeventeenHard:Class;
 		[Embed(source = "levels/hard/mushroom.png")] private var LevelEighteenHard:Class;
-		[Embed(source = "levels/hard/note.png")] private var LevelNineteenHard:Class;
+		[Embed(source = "levels/hard/stairs.png")] private var LevelNineteenHard:Class;
 		[Embed(source = "levels/hard/palm-tree.png")] private var LevelTwentyHard:Class;
 		[Embed(source = "levels/hard/pencil.png")] private var LevelTwentyOneHard:Class;
 		
@@ -102,10 +102,10 @@ package com.butr0s.Nonogram
 			{
 				FlxG.levels = new FlxArray();
 				FlxG.levels.push( { } );	// Push an empty object to fill the '0' position
-				FlxG.levels.push( { 'levelData':LevelOneEasy, 'description':'Bomb', 'completed':'No', 'bestTime':'30:00' } );
-				FlxG.levels.push( { 'levelData':LevelTwoEasy, 'description':'Heart', 'completed':'No', 'bestTime':'30:00' } );
-				FlxG.levels.push( { 'levelData':LevelThreeEasy, 'description':'Trash Can', 'completed':'No', 'bestTime':'30:00' } );
-				FlxG.levels.push( { 'levelData':LevelFourEasy, 'description':'Pill', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelOneEasy, 'description':'Exclamation Mark', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelTwoEasy, 'description':'Question Mark', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelThreeEasy, 'description':'Emoticon', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelFourEasy, 'description':'Cube', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelFiveEasy, 'description':'Padlock', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelSixEasy, 'description':'Smiley', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelSevenEasy, 'description':'Clock', 'completed':'No', 'bestTime':'30:00' } );
@@ -115,36 +115,36 @@ package com.butr0s.Nonogram
 				FlxG.levels.push( { 'levelData':LevelElevenEasy, 'description':'Note', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelTwelveEasy, 'description':'Moon', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelThirteenEasy, 'description':'House', 'completed':'No', 'bestTime':'30:00' } );
-				FlxG.levels.push( { 'levelData':LevelFourteenEasy, 'description':'Emoticon', 'completed':'No', 'bestTime':'30:00' } );
-				FlxG.levels.push( { 'levelData':LevelFifteenEasy, 'description':'Exclamation Mark', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelFourteenEasy, 'description':'Trash Can', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelFifteenEasy, 'description':'Bomb', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelSixteenEasy, 'description':'Pill', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelSeventeenEasy, 'description':'Play/Pause', 'completed':'No', 'bestTime':'30:00' } );
-				FlxG.levels.push( { 'levelData':LevelEighteenEasy, 'description':'Question Mark', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelEighteenEasy, 'description':'Heart', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelNineteenEasy, 'description':'Electrical Outlet', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelTwentyEasy, 'description':'Speaker', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelTwentyOneEasy, 'description':'St. John\'s Arms', 'completed':'No', 'bestTime':'30:00' } );
-				
+
 				FlxG.levels.push( { 'levelData':LevelOneHard, 'description':'Apple', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelTwoHard, 'description':'Bomb', 'completed':'No', 'bestTime':'30:00' } );
-				FlxG.levels.push( { 'levelData':LevelThreeHard, 'description':'Bottle', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelThreeHard, 'description':'Telephone', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelFourHard, 'description':'Boulder', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelFiveHard, 'description':'Candle', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelSixHard, 'description':'Castle', 'completed':'No', 'bestTime':'30:00' } );
-				FlxG.levels.push( { 'levelData':LevelSevenHard, 'description':'Cherry', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelSevenHard, 'description':'Cherries', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelEightHard, 'description':'Coin', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelNineHard, 'description':'Dog', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelTenHard, 'description':'Floppy Disk', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelElevenHard, 'description':'Gameboy', 'completed':'No', 'bestTime':'30:00' } );
-				FlxG.levels.push( { 'levelData':LevelTwelveHard, 'description':'Heart', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelTwelveHard, 'description':'Umbrella', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelThirteenHard, 'description':'House', 'completed':'No', 'bestTime':'30:00' } );
-				FlxG.levels.push( { 'levelData':LevelFourteenHard, 'description':'Japan', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelFourteenHard, 'description':'Rabbit', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelFifteenHard, 'description':'Lock', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelSixteenHard, 'description':'Mario', 'completed':'No', 'bestTime':'30:00' } );
-				FlxG.levels.push( { 'levelData':LevelSeventeenHard, 'description':'Monster', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelSeventeenHard, 'description':'Treasure Chest', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelEighteenHard, 'description':'Mushroom', 'completed':'No', 'bestTime':'30:00' } );
-				FlxG.levels.push( { 'levelData':LevelNineteenHard, 'description':'Note', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelNineteenHard, 'description':'Stairs', 'completed':'No', 'bestTime':'30:00' } );
 				FlxG.levels.push( { 'levelData':LevelTwentyHard, 'description':'Palm Tree', 'completed':'No', 'bestTime':'30:00' } );
-				FlxG.levels.push( { 'levelData':LevelTwentyOneHard, 'description':'Palm Tree', 'completed':'No', 'bestTime':'30:00' } );
+				FlxG.levels.push( { 'levelData':LevelTwentyOneHard, 'description':'Pencil', 'completed':'No', 'bestTime':'30:00' } );
 			}
 			
 			// Create SharedObject data if it doesn't exist
