@@ -425,7 +425,7 @@ package com.butr0s.Nonogram
 		
 		private function goToLevelSelect():void 
 		{
-			FlxG.switchState(EasyLevelSelectState);
+			FlxG.switchState(LevelSelectState);
 		}
 	}
 }
