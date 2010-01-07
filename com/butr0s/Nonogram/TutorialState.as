@@ -16,8 +16,11 @@ package com.butr0s.Nonogram
 		[Embed(source = "images/mouse-cursor.png")] private var MouseCursor:Class;
 		[Embed(source = "images/tutorial/1.png")] private var StepOneCard:Class;
 		[Embed(source = "images/tutorial/2.png")] private var StepTwoCard:Class;
-		[Embed(source = "images/tutorial/1.png")] private var StepThreeCard:Class;
-		[Embed(source = "images/tutorial/2.png")] private var StepFourCard:Class;
+		[Embed(source = "images/tutorial/3.png")] private var StepThreeCard:Class;
+		[Embed(source = "images/tutorial/4.png")] private var StepFourCard:Class;
+		[Embed(source = "images/tutorial/5.png")] private var StepFiveCard:Class;
+		[Embed(source = "images/tutorial/6.png")] private var StepSixCard:Class;
+		[Embed(source = "images/tutorial/7.png")] private var StepSevenCard:Class;
 		
 		override public function TutorialState():void
 		{
@@ -35,12 +38,15 @@ package com.butr0s.Nonogram
 			cards.push(new FlxSprite(StepTwoCard, -360, 0, false, false));
 			cards.push(new FlxSprite(StepThreeCard, -360, 0, false, false));
 			cards.push(new FlxSprite(StepFourCard, -360, 0, false, false));
+			cards.push(new FlxSprite(StepFiveCard, -360, 0, false, false));
+			cards.push(new FlxSprite(StepSixCard, -360, 0, false, false));
+			cards.push(new FlxSprite(StepSevenCard, -360, 0, false, false));
 			
 			// Add cards to screeeeen
 			for (var i:int = 1, j:int = cards.length; i <= j; i++) this.add(cards[i]);
 			
 			// Add "next" button
-			nextButton = new FlxButton(210, 315, new FlxSprite(null, 0, 0, false, false, 100, 30, 0xffdddddd), nextCard, new FlxSprite(null, 0, 0, false, false, 100, 30, 0xff333333), new FlxText(0, 3, 100, 30, "Next", 0xff000000, null, 16, "center"), new FlxText(0, 3, 100, 30, "Next", 0xffcccccc, null, 16, "center"));
+			nextButton = new FlxButton(230, 30, new FlxSprite(null, 0, 0, false, false, 100, 30, 0xffffffff), nextCard, new FlxSprite(null, 0, 0, false, false, 100, 30, 0xff333333), new FlxText(0, 3, 100, 30, "Next", 0xff000000, null, 16, "center"), new FlxText(0, 3, 100, 30, "Next", 0xffcccccc, null, 16, "center"));
 			this.add(nextButton);
 			
 			/**
